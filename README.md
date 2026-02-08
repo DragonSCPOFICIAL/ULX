@@ -102,16 +102,18 @@ ulx-monitor
 
 ---
 
-## 🎉 NOVO: Interface Gráfica 100% em ULX!
+## 🎉 NOVO: Janela Gráfica Nativa X11 com ULX!
 
-Agora o ULX System Monitor possui uma **interface gráfica completa escrita 100% em ULX**!
+Agora o ULX System Monitor abre uma **janela gráfica de VERDADE** usando X11 direto!
 
-- ✅ **Sem dependências** de C, Python ou outras linguagens
+- ✅ **Janela nativa** (não é console/terminal)
+- ✅ **Sem dependências** de GTK, Qt ou outras bibliotecas
+- ✅ **Usando X11 direto** (syscalls do Linux)
 - ✅ **Compilado com CLX** (Compilador ULX)
 - ✅ **Executado em LNX** (Linux Native)
-- ✅ **Design moderno** com cores e bordas
-- ✅ **Atualização em tempo real**
-- ✅ **Totalmente responsivo**
+- ✅ **Reconhecido como programa** pelo sistema
+- ✅ **Design moderno** com cores e cards
+- ✅ **Interface gráfica profissional**
 
 ---
 
