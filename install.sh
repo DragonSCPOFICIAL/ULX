@@ -29,12 +29,12 @@ echo ""
 
 # 1. Copiar binário para /usr/local/bin/
 echo -e "${YELLOW}[1/5] Copiando binário para /usr/local/bin/...${NC}"
-if [ -f "system-monitor" ]; then
-    cp system-monitor /usr/local/bin/ulx-monitor
+if [ -f "system_monitor_gui" ]; then
+    cp system_monitor_gui /usr/local/bin/ulx-monitor
     chmod +x /usr/local/bin/ulx-monitor
     echo -e "${GREEN}[✓] Binário instalado em /usr/local/bin/ulx-monitor${NC}"
 else
-    echo -e "${RED}[✗] Arquivo 'system-monitor' não encontrado!${NC}"
+    echo -e "${RED}[✗] Arquivo 'system_monitor_gui' não encontrado!${NC}"
     exit 1
 fi
 echo ""
@@ -48,7 +48,7 @@ Type=Application
 Name=ULX System Monitor
 Comment=Monitor de Sistema em Tempo Real
 Exec=ulx-monitor
-Icon=utilities-system-monitor
+Icon=utilities-system_monitor_gui
 Categories=System;Utility;
 Terminal=true
 EOF
