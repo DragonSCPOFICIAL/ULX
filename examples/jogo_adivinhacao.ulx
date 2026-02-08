@@ -1,0 +1,24 @@
+// Jogo de Adivinhação em ULX
+// Tão simples quanto possível
+
+numero_secreto = 42
+tentativas = 0
+
+escreva("Bem-vindo ao jogo de adivinhação!")
+escreva("Pense em um número entre 1 e 100")
+
+enquanto (verdadeiro) {
+    palpite = leia()
+    tentativas = tentativas + 1
+    
+    se (palpite == numero_secreto) {
+        escreva("Parabéns! Você acertou em " + tentativas + " tentativas!")
+        parar()
+    } senao {
+        se (palpite > numero_secreto) {
+            escreva("Seu palpite é maior. Tente novamente.")
+        } senao {
+            escreva("Seu palpite é menor. Tente novamente.")
+        }
+    }
+}
