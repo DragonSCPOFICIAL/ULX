@@ -17,24 +17,23 @@ Toda a visão, o manifesto e os detalhes técnicos do projeto foram consolidados
 
 ---
 
-## 🚀 Como Instalar (Modo Seguro):
+## 🚀 Instalação Instantânea (Comando Único)
 
-Para instalar o ULX no seu sistema Linux de forma segura e profissional, siga os passos abaixo:
+Para instalar o ULX agora mesmo, basta copiar e colar a linha abaixo no seu terminal:
 
-1. **Clone o Repositório:**
-   ```bash
-   git clone https://github.com/DragonSCPOFICIAL/ULX.git
-   cd ULX
-   ```
+```bash
+git clone https://github.com/DragonSCPOFICIAL/ULX.git && cd ULX && chmod +x INSTALL.sh && ./INSTALL.sh
+```
 
-2. **Execute o Instalador:**
-   ```bash
-   chmod +x INSTALL.sh
-   ./INSTALL.sh
-   ```
+---
 
-3. **Comece a Criar:**
-   O comando `ulx` agora está disponível no seu terminal. Você pode criar e rodar seus programas com a proteção do Sandbox nativo.
+## 🗑️ Desinstalação Instantânea
+
+Se precisar remover o ULX, use este comando:
+
+```bash
+cd ULX && chmod +x UNINSTALL.sh && ./UNINSTALL.sh && cd .. && rm -rf ULX
+```
 
 ---
 
