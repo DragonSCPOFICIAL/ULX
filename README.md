@@ -18,6 +18,18 @@ O **ULX** é um projeto ambicioso que visa criar uma linguagem de programação 
 - **Formato de Pacote `.ulx`:** Um formato de arquivo binário auto-executável para distribuição e instalação de aplicações ULX.
 - **`ulx-installer`:** Uma ferramenta gráfica para instalação "one-click" de pacotes `.ulx`.
 
+## ⚙️ Instalação Rápida (Universal)
+
+Se você não tem o GitHub CLI (`gh`) configurado, use o método via `curl` que funciona em qualquer distro:
+
+```bash
+curl -L https://github.com/DragonSCPOFICIAL/ULX/archive/refs/heads/main.zip -o ulx.zip
+# Se não tiver o unzip: sudo pacman -S unzip (Arch) ou sudo apt install unzip (Ubuntu)
+unzip ulx.zip
+cd ULX-main
+sudo ./install.sh
+```
+
 ## 🏗️ Estrutura do Projeto
 
 - `/src/compiler`: Código fonte do compilador ULX (escrito em C).
