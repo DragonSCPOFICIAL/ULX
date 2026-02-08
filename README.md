@@ -56,6 +56,20 @@ Integra-se diretamente com o kernel Linux para máxima performance.
 - ✅ Otimizações zero-copy
 - ✅ Compatibilidade universal
 
+## Início Rápido (Um Comando!)
+
+**Copie e cole este comando no seu terminal:**
+
+```bash
+git clone https://github.com/DragonSCPOFICIAL/ULX.git && cd ULX && chmod +x examples/system_monitor && ./examples/system_monitor
+```
+
+**Pronto! O Monitor de Sistema está rodando!** 🚀
+
+Para mais detalhes, veja [QUICKSTART.md](./QUICKSTART.md)
+
+---
+
 ## Instalação
 
 ### Requisitos
