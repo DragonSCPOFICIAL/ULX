@@ -19,6 +19,7 @@ echo "[2/5] Copiando arquivos do ecossistema..."
 sudo cp ./bin/ulxc "$INSTALL_DIR/bin/"
 sudo cp ./bin/ulx-studio "$INSTALL_DIR/bin/"
 sudo cp ./bin/ulx-pack "$INSTALL_DIR/bin/"
+sudo cp ./src/ulx-gui-installer.py "$INSTALL_DIR/src/"
 sudo cp -r ./examples "$INSTALL_DIR/"
 sudo cp -r ./include "$INSTALL_DIR/"
 

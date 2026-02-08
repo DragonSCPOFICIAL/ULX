@@ -24,13 +24,17 @@ EOF
 # 2. Atualizar o banco de dados MIME
 sudo update-mime-database /usr/share/mime
 
-# 3. Criar um script 'handler' para executar arquivos .ulx
+# 3. Criar um script 'handler' visual para arquivos .ulx
 cat <<EOF | sudo tee /usr/bin/ulx-handler > /dev/null
 #!/bin/bash
-# Este script decide como abrir um arquivo .ulx
-# Por enquanto, ele apenas executa o binário contido
-chmod +x "\$1"
-"\$1"
+# Se o script for chamado via interface gráfica, abre o instalador visual
+# Se for via terminal, apenas executa.
+if [ -t 0 ]; then
+    chmod +x "\$1"
+    "\$1"
+else
+    python3 /opt/ulx/src/ulx-gui-installer.py "\$1"
+fi
 EOF
 sudo chmod +x /usr/bin/ulx-handler
 
