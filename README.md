@@ -106,13 +106,15 @@ ulx-monitor
 
 **Copie e cole qualquer um destes comandos:**
 
-### 🚀 Instalar e Executar (Recomendado)
+> **⚠️ IMPORTANTE:** Se receber erro "destination path 'ULX' already exists", use o comando da seção "SOLUÇÃO" abaixo!
+
+### 🚀 Instalar e Executar (Recomendado - Primeira Vez)
 
 ```bash
 git clone https://github.com/DragonSCPOFICIAL/ULX.git && cd ULX && chmod +x system-monitor && ./system-monitor
 ```
 
-### 💾 Instalar como Programa de Sistema
+### 💾 Instalar como Programa de Sistema (Primeira Vez)
 
 ```bash
 git clone https://github.com/DragonSCPOFICIAL/ULX.git && cd ULX && sudo bash install.sh
@@ -170,6 +172,36 @@ which ulx-monitor && file $(which ulx-monitor)
 
 ```bash
 rm -rf ULX
+```
+
+---
+
+## ⚠️ SOLUÇÃO: Erro "destination path 'ULX' already exists"
+
+**Se você recebeu este erro, escolha UMA das opções abaixo:**
+
+### Opção A: Remover a Pasta Antiga e Clonar Novamente
+
+```bash
+rm -rf ULX && git clone https://github.com/DragonSCPOFICIAL/ULX.git && cd ULX && chmod +x system-monitor && ./system-monitor
+```
+
+### Opção B: Atualizar a Pasta Existente (RECOMENDADO)
+
+```bash
+cd ULX && git pull origin main && chmod +x system-monitor && ./system-monitor
+```
+
+### Opção C: Instalar a Versão Existente como Programa de Sistema
+
+```bash
+cd ULX && sudo bash install.sh
+```
+
+### Opção D: Clonar em Uma Pasta Com Nome Diferente
+
+```bash
+git clone https://github.com/DragonSCPOFICIAL/ULX.git ULX-novo && cd ULX-novo && chmod +x system-monitor && ./system-monitor
 ```
 
 ---
