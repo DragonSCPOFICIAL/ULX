@@ -1,65 +1,65 @@
-# 🌌 DOCUMENTAÇÃO COMPLETA: O UNIVERSO ULX
+# DOCUMENTACAO COMPLETA: O UNIVERSO ULX
 
-Este documento contém toda a base de conhecimento, visão e especificações técnicas do ecossistema ULX (LNX, ULX e CLX).
-
----
-
-## ✊ 1. MANIFESTO ULX: O Fim da "Frescura" no Linux
-
-O Linux é poderoso, mas por muito tempo foi mantido atrás de uma barreira de comandos complexos e linguagens difíceis. O **ULX** nasceu para quebrar essa barreira.
-
-### 🎯 Nosso Objetivo
-Transformar cada usuário de Linux em um criador. Queremos que criar um aplicativo seja tão fácil quanto escrever um bilhete, e que compartilhar esse app seja tão simples quanto enviar um arquivo.
-
-### 🚫 Chega de:
-- **"Tem que compilar tudo":** No ULX, o CLX faz o trabalho pesado sozinho.
-- **"Falta biblioteca X ou Y":** O LNX garante que o app fale direto com o hardware. Zero dependências.
-- **"Código impossível":** A sintaxe ULX é feita para humanos, não apenas para máquinas.
-
-### 🌍 Linguagem Universal
-O ULX não é apenas para programadores. É para o estudante, o designer e o usuário comum que quer automatizar tarefas ou criar hologramas no seu notebook.
+Este documento contem toda a base de conhecimento, visao e especificacoes tecnicas do ecossistema ULX (LNX, ULX e CLX).
 
 ---
 
-## 💎 2. ECOSSISTEMA ULX: Escala de Potência Mega
+## 1. MANIFESTO ULX: O Fim da "Frescura" no Linux
 
-O projeto ULX atingiu o nível de **Escala Industrial**. O ecossistema é composto por milhares de definições e módulos que cobrem desde o controle binário de hardware até inteligência artificial.
+O Linux e poderoso, mas por muito tempo foi mantido atras de uma barreira de comandos complexos e linguagens dificeis. O ULX nasceu para quebrar essa barreira.
 
-### 🏛️ A Mega-Estrutura
+### Nosso Objetivo
+Transformar cada usuario de Linux em um criador. Queremos que criar um aplicativo seja tao facil quanto escrever um bilhete, e que compartilhar esse app seja tao simples quanto enviar um arquivo.
+
+### Chega de:
+- "Tem que compilar tudo": No ULX, o CLX faz o trabalho pesado sozinho.
+- "Falta biblioteca X ou Y": O LNX garante que o app fale direto com o hardware. Zero dependencias.
+- "Codigo impossivel": A sintaxe ULX e feita para humanos, nao apenas para maquinas.
+
+### Linguagem Universal
+O ULX nao e apenas para programadores. E para o estudante, o designer e o usuario comum que quer automatizar tarefas ou criar hologramas no seu notebook.
+
+---
+
+## 2. ECOSSISTEMA ULX: Escala de Potencia Mega
+
+O projeto ULX atingiu o nivel de Escala Industrial. O ecossistema e composto por milhares de definicoes e modulos que cobrem desde o controle binario de hardware ate inteligencia artificial.
+
+### A Mega-Estrutura
 
 | Camada | Escala | Responsabilidade |
 | :--- | :--- | :--- |
-| **LNX** | **Kernel Mega** | Drivers massivos para hardware e projeção holográfica (lnx_hardware_massive.asm). |
-| **ULX** | **Mega StdLib** | Biblioteca padrão expansiva com milhares de classes e funções (ulx_stdlib_massive.ulx). |
-| **CLX** | **Mega Compiler** | Arquitetura de múltiplos estágios (Front, Middle, Back-end) com otimização de Nível 3 e geração de binários universais. |
+| LNX | Kernel Mega | Drivers massivos para hardware e projecao holografica (lnx_hardware_massive.asm). |
+| ULX | Mega StdLib | Biblioteca padrao expansiva com milhares de classes e funcoes (ulx_stdlib_massive.ulx). |
+| CLX | Mega Compiler | Arquitetura de multiplos estagios (Front, Middle, Back-end) com otimizacao de Nivel 3 e geracao de binarios universais. |
 
 ---
 
-## 🔍 3. ANÁLISE DO KERNEL LINUX
+## 3. ANALISE DO KERNEL LINUX
 
-Para integrar o ecossistema como uma "potência nativa", baseamos o ULX nos componentes fundamentais do núcleo do Linux.
+Para integrar o ecossistema como uma "potencia nativa", baseamos o ULX nos componentes fundamentais do nucleo do Linux.
 
-### 🛠️ Pontos de Integração
-- **Inicialização (`init/main.c`):** O LNX se inspira no boot do Kernel para configurar o hardware holográfico antes de qualquer outra interface.
-- **Syscalls (`arch/x86/entry`):** O CLX gera binários que usam o padrão `%rax` nativo, tornando a execução 100% direta e sem intermediários.
-- **Vídeo (`drivers/video`):** Acesso direto ao Framebuffer para manipular pixels em nível binário e criar a profundidade necessária para a holografia real.
-
----
-
-## 🗺️ 4. MAPEAMENTO BINÁRIO (LNX, ULX, CLX)
-
-### ⚙️ LNX: O Coração do Hardware
-- **Syscalls Diretas:** Sem `libc`. Comunicação direta via registradores para velocidade máxima.
-- **Controle de I/O:** Mapeamento de memória e portas de hardware para feixes de luz holográficos.
-
-### 📝 ULX: Abstração Humana
-- **Comandos Intuitivos:** `ProjetarJanela()` traduzido automaticamente para instruções de máquina.
-- **Gerenciamento Automático:** Alocação de recursos cuidada pela linguagem para evitar erros do usuário.
-
-### 🚀 CLX: O Compilador Universal
-- **ELF64 Estático:** Binários que rodam em qualquer Linux sem precisar de nada instalado.
-- **Zero Overhead:** Otimização profunda para que o código do usuário tenha performance de nível de Kernel.
+### Pontos de Integracao
+- Inicializacao (init/main.c): O LNX se inspira no boot do Kernel para configurar o hardware holografico antes de qualquer outra interface.
+- Syscalls (arch/x86/entry): O CLX gera binarios que usam o padrao %rax nativo, tornando a execucao 100% direta e sem intermediarios.
+- Video (drivers/video): Acesso direto ao Framebuffer para manipular pixels em nivel binario e criar a profundidade necessaria para a holografia real.
 
 ---
 
-**O Linux agora é verdadeiramente de todos. Sem frescura, apenas criação.**
+## 4. MAPEAMENTO BINARIO (LNX, ULX, CLX)
+
+### LNX: O Coracao do Hardware
+- Syscalls Diretas: Sem libc. Comunicacao direta via registradores para velocidade maxima.
+- Controle de I/O: Mapeamento de memoria e portas de hardware para feixes de luz holograficos.
+
+### ULX: Abstracao Humana
+- Comandos Intuitivos: ProjetarJanela() traduzido automaticamente para instrucoes de maquina.
+- Gerenciamento Automatico: Alocacao de recursos cuidada pela linguagem para evitar erros do usuario.
+
+### CLX: O Compilador Universal
+- ELF64 Estatico: Binarios que rodam em qualquer Linux sem precisar de nada instalado.
+- Zero Overhead: Otimizacao profunda para que o codigo do usuario tenha performance de nivel de Kernel.
+
+---
+
+O Linux agora e verdadeiramente de todos. Sem frescura, apenas criacao.
