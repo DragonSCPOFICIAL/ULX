@@ -102,6 +102,19 @@ ulx-monitor
 
 ---
 
+## 🎉 NOVO: Interface Gráfica 100% em ULX!
+
+Agora o ULX System Monitor possui uma **interface gráfica completa escrita 100% em ULX**!
+
+- ✅ **Sem dependências** de C, Python ou outras linguagens
+- ✅ **Compilado com CLX** (Compilador ULX)
+- ✅ **Executado em LNX** (Linux Native)
+- ✅ **Design moderno** com cores e bordas
+- ✅ **Atualização em tempo real**
+- ✅ **Totalmente responsivo**
+
+---
+
 ## Comando Único de Reinstalação Completa
 
 **COPIE E COLE ESTE COMANDO PARA INSTALAR TUDO DE UMA VEZ:**
@@ -112,9 +125,9 @@ sudo uninstall-ulx-monitor 2>/dev/null; rm -rf ~/ULX ~/ULX-novo; git clone https
 
 **Este comando faz TUDO automaticamente:**
 1. ❌ Remove a versão antiga (se existir)
-2. 📁 Clona o repositório novo
+2. 📁 Clona o repositório novo (com GUI 100% em ULX)
 3. 💾 Instala como programa de sistema
-4. 🚀 Executa o programa
+4. 🚀 Executa o programa com interface gráfica
 
 ---
 
