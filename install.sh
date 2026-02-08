@@ -14,16 +14,32 @@ sudo mkdir -p "$INSTALL_DIR/bin"
 sudo mkdir -p "$INSTALL_DIR/src/compiler"
 sudo mkdir -p "$INSTALL_DIR/examples"
 
-# 2. Copiar arquivos do compilador e exemplos
-echo "[2/5] Copiando arquivos do compilador e exemplos..."
+# 2. Copiar arquivos do compilador, studio e exemplos
+echo "[2/5] Copiando arquivos do ecossistema..."
 sudo cp ./bin/ulxc "$INSTALL_DIR/bin/"
-sudo cp ./examples/hello.ulx "$INSTALL_DIR/examples/"
-sudo cp ./src/compiler/main.c "$INSTALL_DIR/src/compiler/"
+sudo cp ./bin/ulx-studio "$INSTALL_DIR/bin/"
+sudo cp ./bin/ulx-pack "$INSTALL_DIR/bin/"
+sudo cp -r ./examples "$INSTALL_DIR/"
+sudo cp -r ./include "$INSTALL_DIR/"
 
-# 3. Configurar Executável
+# 3. Configurar Executáveis e Atalhos
 echo "[3/5] Configurando permissões e links..."
-sudo chmod +x "$INSTALL_DIR/bin/ulxc"
+sudo chmod +x "$INSTALL_DIR/bin/"*
 sudo ln -sf "$INSTALL_DIR/bin/ulxc" "$BIN_DIR/ulxc"
+sudo ln -sf "$INSTALL_DIR/bin/ulx-studio" "$BIN_DIR/ulx-studio"
+sudo ln -sf "$INSTALL_DIR/bin/ulx-pack" "$BIN_DIR/ulx-pack"
+
+# Criar atalho para o ULX Studio no menu
+cat <<EOF | sudo tee /usr/share/applications/ulx-studio.desktop > /dev/null
+[Desktop Entry]
+Name=ULX Studio
+Comment=IDE Nativa para Desenvolvimento ULX
+Exec=ulx-studio
+Icon=processor
+Terminal=false
+Type=Application
+Categories=Development;IDE;
+EOF
 
 # 4. Integração de Sistema (MIME Types e Handlers)
 echo "[4/5] Integrando ULX ao sistema operacional..."
