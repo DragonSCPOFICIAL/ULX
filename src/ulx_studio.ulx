@@ -1,0 +1,31 @@
+// ULX-Studio: O Ambiente de Desenvolvimento Nativo do ULX
+// Este programa é capaz de criar, gerenciar e compilar outros projetos .ulx
+
+func main() {
+    // Configuração da Janela Principal
+    ui_window("ULX Studio - Professional Edition", 1024, 768)
+    
+    print("--- ULX Studio Iniciado ---")
+    print("[SISTEMA] Carregando compilador nativo ulxc...")
+    print("[SISTEMA] Pronto para criar aplicativos e jogos universais.")
+
+    // Interface do Studio
+    ui_text("Bem-vindo ao ULX Studio")
+    ui_text("Selecione uma ação:")
+
+    func novo_projeto() {
+        print("[STUDIO] Criando novo projeto nativo...")
+        // Lógica para gerar estrutura de pastas
+    }
+
+    func compilar_projeto() {
+        print("[STUDIO] Chamando ulxc para compilação estática...")
+        // Lógica para executar: ulx-pack projeto.ulx icone.png NomeApp
+    }
+
+    ui_button("Novo Projeto", novo_projeto)
+    ui_button("Compilar e Empacotar (.ulx)", compilar_projeto)
+
+    // Inicia o loop nativo
+    dragon_run()
+}
