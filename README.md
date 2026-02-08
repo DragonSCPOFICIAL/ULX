@@ -42,6 +42,21 @@ sudo ./install.sh
 - `/bin`: Binários compilados (ulxc, ulx-studio, ulx-pack).
 - `/examples`: Exemplos de código ULX e modelos de projetos.
 - `/include`: Cabeçalhos da Dragon-Engine para desenvolvedores.
+- `/docs`: Documentação completa e manuais.
+
+## 📚 Documentação Expandida
+
+Para uma expansão exponencial do seu conhecimento, explore nossos manuais detalhados:
+- [**Manual da Dragon-Engine**](docs/DRAGON_ENGINE.md): Aprenda a criar interfaces e jogos com física.
+- [**Guia de Empacotamento .ulx**](docs/PACKAGING.md): Entenda como criar e distribuir seus apps universais.
+- [**Início Rápido**](QUICKSTART.md): O guia para quem quer criar seu primeiro app em 5 minutos.
+
+## 🎮 Exemplos de Poder
+
+Confira a pasta `examples/` para ver o que o ULX pode fazer:
+- `monitor.ulx`: Monitor de sistema nativo ultra-leve.
+- `meu_jogo.ulx`: Template de jogo com sprites e movimento.
+- `ulx_studio.ulx`: A própria IDE do ULX, provando que a linguagem é auto-suficiente.
 
 ---
 
