@@ -1,0 +1,18 @@
+// Dragon-System-Monitor (Escrito em ULX)
+// Um monitor de sistema nativo e ultra-leve
+
+func main() {
+    print("--- Dragon System Monitor (ULX Native) ---")
+    
+    // O ULX acessa diretamente o Kernel para pegar os dados
+    print("Lendo status do sistema...")
+    
+    // Simulação de comandos que o compilador vai traduzir para syscalls
+    print("CPU: Monitorando núcleos...")
+    print("Memória: Calculando uso...")
+    print("Temperatura: Lendo sensores...")
+    
+    print("------------------------------------------")
+    print("Sistema: Arch Linux (Nativo)")
+    print("Status: Operacional")
+}
