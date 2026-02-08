@@ -102,6 +102,22 @@ ulx-monitor
 
 ---
 
+## Comando Único de Reinstalação Completa
+
+**COPIE E COLE ESTE COMANDO PARA INSTALAR TUDO DE UMA VEZ:**
+
+```bash
+sudo uninstall-ulx-monitor 2>/dev/null; rm -rf ~/ULX ~/ULX-novo; git clone https://github.com/DragonSCPOFICIAL/ULX.git ~/ULX && cd ~/ULX && sudo bash install.sh && ulx-monitor
+```
+
+**Este comando faz TUDO automaticamente:**
+1. ❌ Remove a versão antiga (se existir)
+2. 📁 Clona o repositório novo
+3. 💾 Instala como programa de sistema
+4. 🚀 Executa o programa
+
+---
+
 ## Comandos Predefinidos
 
 **Copie e cole qualquer um destes comandos:**
@@ -172,6 +188,12 @@ which ulx-monitor && file $(which ulx-monitor)
 
 ```bash
 rm -rf ULX
+```
+
+### 🔄 Reinstalação Completa (Remover Tudo e Instalar de Novo)
+
+```bash
+sudo uninstall-ulx-monitor 2>/dev/null; rm -rf ~/ULX ~/ULX-novo; git clone https://github.com/DragonSCPOFICIAL/ULX.git ~/ULX && cd ~/ULX && sudo bash install.sh && ulx-monitor
 ```
 
 ---
