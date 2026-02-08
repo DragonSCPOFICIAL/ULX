@@ -102,6 +102,78 @@ ulx-monitor
 
 ---
 
+## Comandos Predefinidos
+
+**Copie e cole qualquer um destes comandos:**
+
+### 🚀 Instalar e Executar (Recomendado)
+
+```bash
+git clone https://github.com/DragonSCPOFICIAL/ULX.git && cd ULX && chmod +x system-monitor && ./system-monitor
+```
+
+### 💾 Instalar como Programa de Sistema
+
+```bash
+git clone https://github.com/DragonSCPOFICIAL/ULX.git && cd ULX && sudo bash install.sh
+```
+
+### 🚀 Executar Programa Instalado (De Qualquer Lugar)
+
+```bash
+ulx-monitor
+```
+
+### 📄 Ver Documentação
+
+```bash
+man ulx-monitor
+```
+
+### 🔄 Atualizar para a Última Versão
+
+```bash
+cd ULX && git pull origin main && sudo bash install.sh
+```
+
+### ❌ Desinstalar o Programa
+
+```bash
+sudo uninstall-ulx-monitor
+```
+
+### 📁 Clonar em Pasta Diferente
+
+```bash
+git clone https://github.com/DragonSCPOFICIAL/ULX.git ULX-novo && cd ULX-novo && chmod +x system-monitor && ./system-monitor
+```
+
+### 🔓 Se Já Tem a Pasta Clonada
+
+```bash
+cd ULX && git pull origin main && chmod +x system-monitor && ./system-monitor
+```
+
+### 💾 Instalar Globalmente (Adicionar ao PATH)
+
+```bash
+sudo cp ULX/system-monitor /usr/local/bin/ulx-monitor && ulx-monitor
+```
+
+### 🔍 Verificar Versão Instalada
+
+```bash
+which ulx-monitor && file $(which ulx-monitor)
+```
+
+### 🗑️ Remover Pasta Clonada (Após Instalar)
+
+```bash
+rm -rf ULX
+```
+
+---
+
 ## Usar o Programa Instalado
 
 ### Executar de qualquer lugar
