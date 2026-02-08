@@ -1,0 +1,10 @@
+#!/bin/bash
+
+PYTHON_COMPILER="/opt/ulx-lang/src/ulx_compiler.py"
+
+if [ ! -f "$PYTHON_COMPILER" ]; then
+    echo "Erro: Compilador Dragon-Lang não encontrado em $PYTHON_COMPILER"
+    exit 1
+fi
+
+python3 "$PYTHON_COMPILER" "$@"
