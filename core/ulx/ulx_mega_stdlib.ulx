@@ -2,16 +2,25 @@ Classe Nucleo {
     Funcao Versao() {}
     Funcao Sistema() {}
     Funcao Arquitetura() {}
+    Funcao CPU_Info() {}
+    Funcao Memoria_Total() {}
+    Funcao Uptime() {}
 }
 
 Classe Graficos2D {
     Funcao Ponto(x, y, c) {}
     Funcao Linha(x1, y1, x2, y2, c) {}
     Funcao Retangulo(x, y, w, h, c) {}
+    Funcao RetanguloPreenchido(x, y, w, h, c) {}
     Funcao Circulo(x, y, r, c) {}
+    Funcao CirculoPreenchido(x, y, r, c) {}
     Funcao Elipse(x, y, rx, ry, c) {}
     Funcao Poligono(pontos, c) {}
+    Funcao CurvaBezier(p1, p2, p3, p4, c) {}
     Funcao Texto(x, y, t, f, c) {}
+    Funcao DefinirFonte(f) {}
+    Funcao Limpar(c) {}
+    Funcao Gradiente(x, y, w, h, c1, c2) {}
 }
 
 Classe Graficos3D {
@@ -21,6 +30,10 @@ Classe Graficos3D {
     Funcao Textura(img) {}
     Funcao Camera(pos, rot) {}
     Funcao Luz(tipo, pos, cor) {}
+    Funcao Renderizar() {}
+    Funcao Shader_Carregar(p) {}
+    Funcao Material_Definir(m) {}
+    Funcao Transformar(m) {}
 }
 
 Classe HolografiaAvancada {
@@ -28,44 +41,71 @@ Classe HolografiaAvancada {
     Funcao DefinirProfundidade(obj, d) {}
     Funcao SincronizarHardware(lnx_ptr) {}
     Funcao EstabilizarFeixe(intensidade) {}
+    Funcao FocoHolografico(f) {}
+    Funcao CalibrarProjetor() {}
+    Funcao ModoHolograma(m) {}
 }
 
 Classe AudioProcessamento {
     Funcao Tocar(onda) {}
     Funcao Parar(id) {}
+    Funcao Pausar(id) {}
     Funcao Volume(v) {}
     Funcao Filtro(tipo, freq) {}
     Funcao Mixer(canais) {}
+    Funcao Efeito_Reverb(i) {}
+    Funcao Efeito_Echo(i) {}
+    Funcao Gravacao_Iniciar() {}
+    Funcao Gravacao_Parar() {}
 }
 
 Classe RedeProtocolos {
     Funcao HTTP_Get(url) {}
     Funcao HTTP_Post(url, dados) {}
+    Funcao HTTP_Put(url, dados) {}
+    Funcao HTTP_Delete(url) {}
     Funcao FTP_Enviar(arq) {}
+    Funcao FTP_Receber(arq) {}
     Funcao SSH_Conectar(host) {}
     Funcao TCP_Fluxo(ip, porta) {}
     Funcao UDP_Pacote(ip, porta) {}
+    Funcao DNS_Resolver(h) {}
+    Funcao WebSocket_Abrir(u) {}
 }
 
 Classe Criptografia {
     Funcao SHA256(dados) {}
+    Funcao SHA512(dados) {}
+    Funcao MD5(dados) {}
     Funcao AES_Cifrar(dados, chave) {}
+    Funcao AES_Decifrar(dados, chave) {}
     Funcao RSA_Assinar(dados, priv) {}
+    Funcao RSA_Verificar(dados, pub) {}
     Funcao GerarChave() {}
+    Funcao Base64_Codificar(d) {}
+    Funcao Base64_Decodificar(d) {}
 }
 
 Classe BancoDados {
     Funcao Conectar(str) {}
+    Funcao Desconectar() {}
     Funcao Executar(sql) {}
     Funcao Consultar(sql) {}
-    Funcao Transacao() {}
+    Funcao Transacao_Iniciar() {}
+    Funcao Transacao_Commit() {}
+    Funcao Transacao_Rollback() {}
 }
 
 Classe IA_Nucleo {
     Funcao Tensor(dim) {}
-    Funcao Neuronio(pesos) {}
-    Funcao Treinar(dados) {}
+    Funcao Camada_Densa(n) {}
+    Funcao Camada_Conv2D(f, k) {}
+    Funcao Ativacao_ReLU() {}
+    Funcao Ativacao_Sigmoid() {}
+    Funcao Treinar(dados, labels) {}
     Funcao Predizer(entrada) {}
+    Funcao SalvarModelo(p) {}
+    Funcao CarregarModelo(p) {}
 }
 
 Classe Fisica_Engine {
@@ -73,6 +113,9 @@ Classe Fisica_Engine {
     Funcao Colisao(obj1, obj2) {}
     Funcao Forca(obj, f) {}
     Funcao Massa(obj, m) {}
+    Funcao Impulso(obj, i) {}
+    Funcao Atrito(obj, a) {}
+    Funcao Sincronizar(fps) {}
 }
 
 Classe Interface_Usuario {
@@ -83,21 +126,33 @@ Classe Interface_Usuario {
     Funcao Slider(min, max) {}
     Funcao Menu(itens) {}
     Funcao Icone(img) {}
+    Funcao ProgressBar(v) {}
+    Funcao Checkbox(l) {}
+    Funcao RadioButton(l) {}
+    Funcao ScrollView() {}
 }
 
 Classe Arquivos_Sistema {
     Funcao Ler(p) {}
     Funcao Gravar(p, d) {}
+    Funcao Anexar(p, d) {}
     Funcao Mover(o, d) {}
+    Funcao Copiar(o, d) {}
     Funcao CriarPasta(p) {}
+    Funcao Deletar(p) {}
     Funcao Permissoes(p, m) {}
+    Funcao Listar(p) {}
 }
 
 Classe Processamento_Imagem {
     Funcao FiltroCinza(img) {}
+    Funcao FiltroSepia(img) {}
+    Funcao Blur(img, r) {}
     Funcao Redimensionar(img, w, h) {}
     Funcao Girar(img, ang) {}
     Funcao Brilho(img, b) {}
+    Funcao Contraste(img, c) {}
+    Funcao Cortar(img, r) {}
 }
 
 Classe Util_Matematica {
@@ -105,6 +160,27 @@ Classe Util_Matematica {
     Funcao Exp(n) {}
     Funcao Tan(n) {}
     Funcao Atan(n) {}
+    Funcao Sin(n) {}
+    Funcao Cos(n) {}
     Funcao Matriz_Mult(m1, m2) {}
+    Funcao Matriz_Inverter(m) {}
     Funcao Vetor_Normalizar(v) {}
+    Funcao Vetor_ProdutoEscalar(v1, v2) {}
+    Funcao Vetor_ProdutoVetorial(v1, v2) {}
+}
+
+Classe Sistema_Processos {
+    Funcao Executar(cmd) {}
+    Funcao Matar(pid) {}
+    Funcao Listar() {}
+    Funcao Thread_Criar(f) {}
+    Funcao Mutex_Travar(m) {}
+    Funcao Mutex_Destravar(m) {}
+}
+
+Classe Hardware_Info {
+    Funcao Bateria_Nivel() {}
+    Funcao Temperatura_CPU() {}
+    Funcao Sensores_Listar() {}
+    Funcao GPU_Uso() {}
 }
