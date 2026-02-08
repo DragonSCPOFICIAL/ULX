@@ -1,4 +1,0 @@
-func main() {
-    print("Olá, Mundo da Dragon-Lang!")
-    print("Este é um programa universal para Linux.")
-}
