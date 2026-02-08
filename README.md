@@ -58,13 +58,21 @@ Integra-se diretamente com o kernel Linux para máxima performance.
 
 ## Início Rápido (Um Comando!)
 
+### Opção 1: Usar o Binário Compilado (Mais Rápido)
+
 **Copie e cole este comando no seu terminal:**
+
+```bash
+git clone https://github.com/DragonSCPOFICIAL/ULX.git && cd ULX && chmod +x system-monitor && ./system-monitor
+```
+
+**Pronto! O Monitor de Sistema está rodando!** 🚀
+
+### Opção 2: Clonar e Usar os Exemplos
 
 ```bash
 git clone https://github.com/DragonSCPOFICIAL/ULX.git && cd ULX && chmod +x examples/system_monitor && ./examples/system_monitor
 ```
-
-**Pronto! O Monitor de Sistema está rodando!** 🚀
 
 Para mais detalhes, veja [QUICKSTART.md](./QUICKSTART.md)
 
@@ -213,6 +221,7 @@ fecha(socket)
 
 ```
 ULX/
+├── system-monitor                         ⭐ BINÁRIO COMPILADO (Pronto para usar!)
 ├── src/
 │   └── compiler/
 │       ├── clx_compiler.py                (Compilador base)
@@ -229,8 +238,10 @@ ULX/
 │   ├── hello_world.ulx                    (Hello World)
 │   ├── calculadora.ulx                    (Calculadora)
 │   ├── loops.ulx                          (Loops)
-│   └── jogo_adivinhacao.ulx               (Jogo)
+│   ├── jogo_adivinhacao.ulx               (Jogo)
+│   └── system_monitor.ulx                 (Código-fonte do Monitor)
 ├── README.md                              (Este arquivo)
+├── QUICKSTART.md                          (Início Rápido)
 ├── ARCHITECTURE.md                        (Arquitetura)
 ├── ULX_SYNTAX.md                          (Sintaxe)
 ├── LINUX_UNIVERSAL.md                     (Compatibilidade)
