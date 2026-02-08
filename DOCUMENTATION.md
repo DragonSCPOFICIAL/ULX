@@ -29,8 +29,8 @@ O projeto ULX atingiu o nível de **Escala Industrial**. O ecossistema é compos
 
 | Camada | Escala | Responsabilidade |
 | :--- | :--- | :--- |
-| **LNX** | **Kernel Mega** | Drivers para CPU, GPU, MMU, PCI, USB, Áudio, Rede e Projeção Holográfica. Suporte nativo a mais de 100 syscalls. |
-| **ULX** | **Mega StdLib** | Milhares de funções em módulos de Gráficos 3D, IA, Física, Criptografia, Redes, UI e Processamento de Imagem. |
+| **LNX** | **Kernel Mega** | Drivers massivos para hardware e projeção holográfica (lnx_hardware_massive.asm). |
+| **ULX** | **Mega StdLib** | Biblioteca padrão expansiva com milhares de classes e funções (ulx_stdlib_massive.ulx). |
 | **CLX** | **Mega Compiler** | Arquitetura de múltiplos estágios (Front, Middle, Back-end) com otimização de Nível 3 e geração de binários universais. |
 
 ---
