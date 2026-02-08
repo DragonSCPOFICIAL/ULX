@@ -1,0 +1,110 @@
+Classe Nucleo {
+    Funcao Versao() {}
+    Funcao Sistema() {}
+    Funcao Arquitetura() {}
+}
+
+Classe Graficos2D {
+    Funcao Ponto(x, y, c) {}
+    Funcao Linha(x1, y1, x2, y2, c) {}
+    Funcao Retangulo(x, y, w, h, c) {}
+    Funcao Circulo(x, y, r, c) {}
+    Funcao Elipse(x, y, rx, ry, c) {}
+    Funcao Poligono(pontos, c) {}
+    Funcao Texto(x, y, t, f, c) {}
+}
+
+Classe Graficos3D {
+    Funcao Vertice(x, y, z) {}
+    Funcao Face(v1, v2, v3) {}
+    Funcao Malha(faces) {}
+    Funcao Textura(img) {}
+    Funcao Camera(pos, rot) {}
+    Funcao Luz(tipo, pos, cor) {}
+}
+
+Classe HolografiaAvancada {
+    Funcao ProjetarVolumetrico(obj) {}
+    Funcao DefinirProfundidade(obj, d) {}
+    Funcao SincronizarHardware(lnx_ptr) {}
+    Funcao EstabilizarFeixe(intensidade) {}
+}
+
+Classe AudioProcessamento {
+    Funcao Tocar(onda) {}
+    Funcao Parar(id) {}
+    Funcao Volume(v) {}
+    Funcao Filtro(tipo, freq) {}
+    Funcao Mixer(canais) {}
+}
+
+Classe RedeProtocolos {
+    Funcao HTTP_Get(url) {}
+    Funcao HTTP_Post(url, dados) {}
+    Funcao FTP_Enviar(arq) {}
+    Funcao SSH_Conectar(host) {}
+    Funcao TCP_Fluxo(ip, porta) {}
+    Funcao UDP_Pacote(ip, porta) {}
+}
+
+Classe Criptografia {
+    Funcao SHA256(dados) {}
+    Funcao AES_Cifrar(dados, chave) {}
+    Funcao RSA_Assinar(dados, priv) {}
+    Funcao GerarChave() {}
+}
+
+Classe BancoDados {
+    Funcao Conectar(str) {}
+    Funcao Executar(sql) {}
+    Funcao Consultar(sql) {}
+    Funcao Transacao() {}
+}
+
+Classe IA_Nucleo {
+    Funcao Tensor(dim) {}
+    Funcao Neuronio(pesos) {}
+    Funcao Treinar(dados) {}
+    Funcao Predizer(entrada) {}
+}
+
+Classe Fisica_Engine {
+    Funcao Gravidade(g) {}
+    Funcao Colisao(obj1, obj2) {}
+    Funcao Forca(obj, f) {}
+    Funcao Massa(obj, m) {}
+}
+
+Classe Interface_Usuario {
+    Funcao Janela(t, w, h) {}
+    Funcao Painel(pos, dim) {}
+    Funcao Botao(l, a) {}
+    Funcao EntradaTexto(d) {}
+    Funcao Slider(min, max) {}
+    Funcao Menu(itens) {}
+    Funcao Icone(img) {}
+}
+
+Classe Arquivos_Sistema {
+    Funcao Ler(p) {}
+    Funcao Gravar(p, d) {}
+    Funcao Mover(o, d) {}
+    Funcao CriarPasta(p) {}
+    Funcao Permissoes(p, m) {}
+}
+
+Classe Processamento_Imagem {
+    Funcao FiltroCinza(img) {}
+    Funcao Redimensionar(img, w, h) {}
+    Funcao Girar(img, ang) {}
+    Funcao Brilho(img, b) {}
+}
+
+Classe Util_Matematica {
+    Funcao Log(n) {}
+    Funcao Exp(n) {}
+    Funcao Tan(n) {}
+    Funcao Atan(n) {}
+    Funcao Matriz_Mult(m1, m2) {}
+    Funcao Vetor_Normalizar(v) {}
+}

@@ -1,0 +1,115 @@
+Classe Sistema {
+    Funcao Sair(codigo) {
+    }
+    Funcao Dormir(ms) {
+    }
+}
+
+Classe Console {
+    Funcao Escrever(texto) {
+    }
+    Funcao Ler() {
+    }
+    Funcao Limpar() {
+    }
+}
+
+Classe Holograma {
+    Funcao CriarJanela(t, w, h, d) {
+    }
+    Funcao Projetar(obj) {
+    }
+    Funcao Mover(obj, x, y, z) {
+    }
+    Funcao Escalar(obj, s) {
+    }
+    Funcao Rotacionar(obj, r) {
+    }
+    Funcao DefinirCor(obj, c) {
+    }
+    Funcao Notificar(msg) {
+    }
+}
+
+Classe UI {
+    Funcao Botao(texto, acao) {
+    }
+    Funcao Texto(val, pos) {
+    }
+    Funcao Entrada(dica) {
+    }
+    Funcao Imagem(caminho) {
+    }
+    Funcao Lista(itens) {
+    }
+}
+
+Classe Rede {
+    Funcao Conectar(ip, porta) {
+    }
+    Funcao Escutar(porta) {
+    }
+    Funcao Enviar(dados) {
+    }
+    Funcao Receber() {
+    }
+}
+
+Classe Arquivo {
+    Funcao Abrir(path, modo) {
+    }
+    Funcao LerTudo(fd) {
+    }
+    Funcao EscreverTudo(fd, dados) {
+    }
+    Funcao Existe(path) {
+    }
+    Funcao Deletar(path) {
+    }
+}
+
+Classe Matematica {
+    Funcao Raiz(n) {
+    }
+    Funcao Potencia(b, e) {
+    }
+    Funcao Abs(n) {
+    }
+    Funcao Seno(a) {
+    }
+    Funcao Cosseno(a) {
+    }
+    Funcao Aleatorio(min, max) {
+    }
+}
+
+Classe Texto {
+    Funcao Tamanho(t) {
+    }
+    Funcao Cortar(t, i, f) {
+    }
+    Funcao Juntar(t1, t2) {
+    }
+    Funcao Comparar(t1, t2) {
+    }
+    Funcao ParaInteiro(t) {
+    }
+    Funcao DeInteiro(n) {
+    }
+}
+
+Classe Memoria {
+    Funcao Alocar(tamanho) {
+    }
+    Funcao Liberar(ptr) {
+    }
+    Funcao Copiar(dst, src, n) {
+    }
+}
+
+Classe Tempo {
+    Funcao Agora() {
+    }
+    Funcao Timestamp() {
+    }
+}

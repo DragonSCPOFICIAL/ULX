@@ -1,0 +1,13 @@
+Classe Aplicativo {
+    nome: Texto
+    versao: Texto
+    
+    Funcao Iniciar() {
+    }
+}
+
+Funcao Projetar(obj) {
+}
+
+Funcao Notificar(msg) {
+}

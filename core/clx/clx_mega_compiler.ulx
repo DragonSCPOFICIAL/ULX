@@ -1,0 +1,64 @@
+Classe CLX_FrontEnd {
+    Funcao Scanner() {}
+    Funcao Lexer() {}
+    Funcao Parser() {}
+    Funcao AST_Builder() {}
+}
+
+Classe CLX_MiddleEnd {
+    Funcao AnalisadorSemantico() {}
+    Funcao VerificadorTipos() {}
+    Funcao Otimizador_Nivel1() {}
+    Funcao Otimizador_Nivel2() {}
+    Funcao Otimizador_Nivel3() {}
+    Funcao Gerador_IR() {}
+}
+
+Classe CLX_BackEnd {
+    Funcao SelecaoInstrucoes() {}
+    Funcao AlocadorRegistradores() {}
+    Funcao Peephole_Optimizer() {}
+    Funcao Gerador_ELF64() {}
+    Funcao Gerador_MachO() {}
+    Funcao Gerador_PE() {}
+}
+
+Classe CLX_Linker {
+    Funcao ResolverSimbolos() {}
+    Funcao MesclarSecoes() {}
+    Funcao CriarExecutavel() {}
+    Funcao CriarBiblioteca() {}
+}
+
+Classe CLX_Packager {
+    Funcao ComprimirRecursos() {}
+    Funcao CriarPacoteULX() {}
+    Funcao AssinarBinario() {}
+}
+
+Classe CLX_Debugger {
+    Funcao GerarSimbolosDebug() {}
+    Funcao RastrearStack() {}
+}
+
+Classe CLX_Main {
+    Funcao Compilar(projeto) {
+        CLX_FrontEnd.Scanner()
+        CLX_FrontEnd.Lexer()
+        CLX_FrontEnd.Parser()
+        
+        CLX_MiddleEnd.AnalisadorSemantico()
+        CLX_MiddleEnd.Otimizador_Nivel3()
+        
+        CLX_BackEnd.Gerador_ELF64()
+        
+        CLX_Linker.CriarExecutavel()
+        
+        CLX_Packager.CriarPacoteULX()
+    }
+}
+
+fn main() -> i32 {
+    CLX_Main.Compilar("mega_projeto.ulx")
+    return 0
+}
