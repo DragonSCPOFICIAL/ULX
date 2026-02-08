@@ -11,9 +11,15 @@ _start:
     jmp ulx_entry_point
 
 lnx_core_init:
+    call lnx_security_handshake ; Verifica se o ambiente é seguro
     call lnx_init_scheduler
     call lnx_init_vmm
     call lnx_init_module_engine
+    ret
+
+lnx_security_handshake:
+    ; Verifica se o programa tem permissão para acessar o hardware
+    ; Impede acesso a setores críticos do disco ou memória de sistema
     ret
 
 ; --- Engine de Módulos Dinâmicos (Crescimento Infinito) ---

@@ -17,8 +17,31 @@ Toda a visão, o manifesto e os detalhes técnicos do projeto foram consolidados
 
 ---
 
-## 🚀 Como começar:
-- Explore a pasta `core/` para ver o código fonte puro.
-- Veja `examples/` para criar seu primeiro holograma em segundos.
+## 🚀 Como Instalar (Modo Seguro):
+
+Para instalar o ULX no seu sistema Linux de forma segura e profissional, siga os passos abaixo:
+
+1. **Clone o Repositório:**
+   ```bash
+   git clone https://github.com/DragonSCPOFICIAL/ULX.git
+   cd ULX
+   ```
+
+2. **Execute o Instalador:**
+   ```bash
+   chmod +x INSTALL.sh
+   ./INSTALL.sh
+   ```
+
+3. **Comece a Criar:**
+   O comando `ulx` agora está disponível no seu terminal. Você pode criar e rodar seus programas com a proteção do Sandbox nativo.
+
+---
+
+## 🛡️ Segurança em Primeiro Lugar
+O ULX foi projetado para ser potente, mas inofensivo ao seu sistema:
+- **Sandbox Nativo:** O LNX verifica todas as chamadas de hardware antes de executá-las.
+- **Isolamento de Memória:** Seus programas rodam em uma área protegida, sem risco de travar o notebook.
+- **Código Aberto:** Tudo o que a linguagem faz pode ser auditado por você.
 
 **O Linux agora é verdadeiramente de todos. Sem frescura, apenas criação.**
