@@ -1,78 +1,170 @@
 #!/bin/bash
 
-APP_NAME="ulx"
-INSTALL_DIR="/opt/$APP_NAME"
-BIN_DIR="/usr/bin"
+# ULX System Monitor - Instalador
+# Transforma o executável em um programa de sistema instalado
 
-echo "==============================================="
-echo "   Iniciando Instalação do Ecossistema ULX"
-echo "==============================================="
+set -e
 
-# 1. Criar diretórios
-echo "[1/5] Criando diretórios do sistema..."
-sudo mkdir -p "$INSTALL_DIR/bin"
-sudo mkdir -p "$INSTALL_DIR/src/compiler"
-sudo mkdir -p "$INSTALL_DIR/examples"
+echo "╔════════════════════════════════════════════════════════════════╗"
+echo "║          ULX System Monitor - Instalador                      ║"
+echo "╚════════════════════════════════════════════════════════════════╝"
+echo ""
 
-# 2. Copiar arquivos do compilador, player, studio e exemplos
-echo "[2/5] Copiando arquivos do ecossistema..."
-sudo cp ./bin/ulxc "$INSTALL_DIR/bin/"
-sudo cp ./bin/ulx-run "$INSTALL_DIR/bin/"
-sudo cp ./bin/ulx-studio "$INSTALL_DIR/bin/"
-sudo cp ./bin/ulx-pack "$INSTALL_DIR/bin/"
-sudo cp ./src/ulx-gui-installer.py "$INSTALL_DIR/src/"
-sudo cp -r ./examples "$INSTALL_DIR/"
-sudo cp -r ./include "$INSTALL_DIR/"
+# Cores para output
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+YELLOW='\033[1;33m'
+NC='\033[0m' # No Color
 
-# 3. Configurar Executáveis e Atalhos
-echo "[3/5] Configurando permissões e links..."
-sudo chmod +x "$INSTALL_DIR/bin/"*
-sudo ln -sf "$INSTALL_DIR/bin/ulxc" "$BIN_DIR/ulxc"
-sudo ln -sf "$INSTALL_DIR/bin/ulx-run" "$BIN_DIR/ulx-run"
-sudo ln -sf "$INSTALL_DIR/bin/ulx-studio" "$BIN_DIR/ulx-studio"
-sudo ln -sf "$INSTALL_DIR/bin/ulx-pack" "$BIN_DIR/ulx-pack"
+# Verificar se é root
+if [[ $EUID -ne 0 ]]; then
+   echo -e "${RED}[✗] Este script precisa ser executado como root!${NC}"
+   echo ""
+   echo "Use: sudo bash install.sh"
+   exit 1
+fi
 
-# Criar atalho para o ULX Studio no menu
-cat <<EOF | sudo tee /usr/share/applications/ulx-studio.desktop > /dev/null
+echo -e "${YELLOW}[*] Iniciando instalação...${NC}"
+echo ""
+
+# 1. Copiar binário para /usr/local/bin/
+echo -e "${YELLOW}[1/5] Copiando binário para /usr/local/bin/...${NC}"
+if [ -f "system-monitor" ]; then
+    cp system-monitor /usr/local/bin/ulx-monitor
+    chmod +x /usr/local/bin/ulx-monitor
+    echo -e "${GREEN}[✓] Binário instalado em /usr/local/bin/ulx-monitor${NC}"
+else
+    echo -e "${RED}[✗] Arquivo 'system-monitor' não encontrado!${NC}"
+    exit 1
+fi
+echo ""
+
+# 2. Criar arquivo .desktop para menu de aplicativos
+echo -e "${YELLOW}[2/5] Criando atalho no menu de aplicativos...${NC}"
+mkdir -p /usr/share/applications
+cat > /usr/share/applications/ulx-monitor.desktop << 'EOF'
 [Desktop Entry]
-Name=ULX Studio
-Comment=IDE Nativa para Desenvolvimento ULX
-Exec=ulx-studio
-Icon=processor
-Terminal=false
 Type=Application
-Categories=Development;IDE;
+Name=ULX System Monitor
+Comment=Monitor de Sistema em Tempo Real
+Exec=ulx-monitor
+Icon=utilities-system-monitor
+Categories=System;Utility;
+Terminal=true
 EOF
+chmod 644 /usr/share/applications/ulx-monitor.desktop
+echo -e "${GREEN}[✓] Atalho criado em /usr/share/applications/ulx-monitor.desktop${NC}"
+echo ""
 
-# 4. Integração de Sistema (MIME Types e Handlers)
-echo "[4/5] Integrando ULX ao sistema operacional..."
-sudo chmod +x ./src/ulx-integrator.sh
-sudo ./src/ulx-integrator.sh
+# 3. Criar arquivo de man page (documentação)
+echo -e "${YELLOW}[3/5] Criando documentação (man page)...${NC}"
+mkdir -p /usr/share/man/man1
+cat > /usr/share/man/man1/ulx-monitor.1 << 'EOF'
+.TH ULX-MONITOR 1 "Fevereiro 2026" "ULX 1.0" "Utilitários do Sistema"
+.SH NOME
+ulx-monitor \- Monitor de Sistema em Tempo Real
+.SH SINOPSE
+.B ulx-monitor
+.SH DESCRIÇÃO
+Monitor de Sistema que mostra em tempo real:
+.IP \(bu 2
+CPU (cores, modelo, frequência)
+.IP \(bu 2
+Memória (total, usada, disponível)
+.IP \(bu 2
+Armazenamento (discos, uso)
+.IP \(bu 2
+Uptime (tempo ligado)
+.IP \(bu 2
+Top 5 Processos (maior uso de CPU/RAM)
+.IP \(bu 2
+Rede (interfaces ativas)
+.SH EXEMPLOS
+Executar o monitor:
+.IP
+ulx-monitor
+.PP
+Para sair, pressione Ctrl+C
+.SH AUTOR
+Dragon SCP Official
+.SH VEJA TAMBÉM
+top(1), htop(1), free(1)
+EOF
+chmod 644 /usr/share/man/man1/ulx-monitor.1
+echo -e "${GREEN}[✓] Documentação criada em /usr/share/man/man1/ulx-monitor.1${NC}"
+echo ""
 
-# 5. Verificar dependências de sistema (GCC, Unzip) e instalar se necessário
-echo "[5/5] Verificando dependências de sistema..."
+# 4. Criar script de desinstalação
+echo -e "${YELLOW}[4/5] Criando script de desinstalação...${NC}"
+cat > /usr/local/bin/uninstall-ulx-monitor << 'EOF'
+#!/bin/bash
 
-# Verificar GCC
-if ! command -v gcc &> /dev/null; then
-    echo "GCC não encontrado. Instalando..."
-    if command -v pacman &> /dev/null; then
-        sudo pacman -S --noconfirm gcc
-    elif command -v apt &> /dev/null; then
-        sudo apt update && sudo apt install -y gcc
-    fi
+echo "╔════════════════════════════════════════════════════════════════╗"
+echo "║          ULX System Monitor - Desinstalador                   ║"
+echo "╚════════════════════════════════════════════════════════════════╝"
+echo ""
+
+if [[ $EUID -ne 0 ]]; then
+   echo "[✗] Este script precisa ser executado como root!"
+   echo "Use: sudo uninstall-ulx-monitor"
+   exit 1
 fi
 
-# Verificar Unzip
-if ! command -v unzip &> /dev/null; then
-    echo "Unzip não encontrado. Instalando..."
-    if command -v pacman &> /dev/null; then
-        sudo pacman -S --noconfirm unzip
-    elif command -v apt &> /dev/null; then
-        sudo apt update && sudo apt install -y unzip
-    fi
+echo "[*] Desinstalando ULX System Monitor..."
+echo ""
+
+# Remover binário
+if [ -f "/usr/local/bin/ulx-monitor" ]; then
+    rm -f /usr/local/bin/ulx-monitor
+    echo "[✓] Binário removido"
 fi
 
-echo "==============================================="
-echo "        Instalação Concluída com Sucesso!"
-echo "==============================================="
-echo "Você pode usar o compilador 'ulxc' agora. Tente 'ulxc /opt/ulx/examples/hello.ulx'"
+# Remover atalho
+if [ -f "/usr/share/applications/ulx-monitor.desktop" ]; then
+    rm -f /usr/share/applications/ulx-monitor.desktop
+    echo "[✓] Atalho removido"
+fi
+
+# Remover man page
+if [ -f "/usr/share/man/man1/ulx-monitor.1" ]; then
+    rm -f /usr/share/man/man1/ulx-monitor.1
+    echo "[✓] Documentação removida"
+fi
+
+# Remover script de desinstalação
+rm -f /usr/local/bin/uninstall-ulx-monitor
+echo "[✓] Script de desinstalação removido"
+
+echo ""
+echo "[✓] ULX System Monitor foi desinstalado com sucesso!"
+EOF
+chmod +x /usr/local/bin/uninstall-ulx-monitor
+echo -e "${GREEN}[✓] Script de desinstalação criado${NC}"
+echo ""
+
+# 5. Atualizar banco de dados do man
+echo -e "${YELLOW}[5/5] Atualizando banco de dados...${NC}"
+mandb > /dev/null 2>&1 || true
+echo -e "${GREEN}[✓] Banco de dados atualizado${NC}"
+echo ""
+
+# Resumo final
+echo "╔════════════════════════════════════════════════════════════════╗"
+echo "║                   INSTALAÇÃO CONCLUÍDA!                       ║"
+echo "╚════════════════════════════════════════════════════════════════╝"
+echo ""
+echo -e "${GREEN}[✓] ULX System Monitor foi instalado com sucesso!${NC}"
+echo ""
+echo "📍 Localização do binário: /usr/local/bin/ulx-monitor"
+echo "📍 Atalho no menu: /usr/share/applications/ulx-monitor.desktop"
+echo "📍 Documentação: man ulx-monitor"
+echo ""
+echo "🚀 Para executar:"
+echo "   ulx-monitor"
+echo ""
+echo "❌ Para desinstalar:"
+echo "   sudo uninstall-ulx-monitor"
+echo ""
+echo "📖 Para ler a documentação:"
+echo "   man ulx-monitor"
+echo ""

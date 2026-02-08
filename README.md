@@ -78,6 +78,52 @@ Para mais detalhes, veja [QUICKSTART.md](./QUICKSTART.md)
 
 ---
 
+## Instalar como Programa de Sistema
+
+**Transforme o executável em um programa instalado que funciona de qualquer lugar:**
+
+### Passo 1: Clonar o repositório
+
+```bash
+git clone https://github.com/DragonSCPOFICIAL/ULX.git && cd ULX
+```
+
+### Passo 2: Executar o instalador
+
+```bash
+sudo bash install.sh
+```
+
+### Passo 3: Pronto! Use em qualquer lugar
+
+```bash
+ulx-monitor
+```
+
+---
+
+## Usar o Programa Instalado
+
+### Executar de qualquer lugar
+
+```bash
+ulx-monitor
+```
+
+### Ver documentação
+
+```bash
+man ulx-monitor
+```
+
+### Desinstalar
+
+```bash
+sudo uninstall-ulx-monitor
+```
+
+---
+
 ## Instalação
 
 ### Requisitos
