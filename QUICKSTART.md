@@ -2,17 +2,43 @@
 
 ## Instalar e Executar em Um Comando
 
+### **Opção 1: Clonar e Executar (Recomendado)**
+
 **Copie e cole este comando no seu terminal:**
 
 ```bash
-git clone https://github.com/DragonSCPOFICIAL/ULX.git && cd ULX && chmod +x examples/system_monitor && ./examples/system_monitor
+git clone https://github.com/DragonSCPOFICIAL/ULX.git && cd ULX && chmod +x system-monitor && ./system-monitor
 ```
 
 **Pronto! O Monitor de Sistema está rodando!** 🚀
 
 ---
 
-## O Que Esse Comando Faz
+### **Opção 2: Se Já Tem a Pasta ULX Clonada**
+
+Se você já clonou o repositório antes e recebe erro "destination path 'ULX' already exists":
+
+```bash
+cd ULX && git pull origin main && chmod +x system-monitor && ./system-monitor
+```
+
+Isso atualiza a pasta existente com a versão mais recente.
+
+---
+
+### **Opção 3: Clonar em Pasta Diferente**
+
+Se quer manter a pasta antiga e clonar em uma nova:
+
+```bash
+git clone https://github.com/DragonSCPOFICIAL/ULX.git ULX-novo && cd ULX-novo && chmod +x system-monitor && ./system-monitor
+```
+
+---
+
+## O Que Cada Comando Faz
+
+### **Opção 1:**
 
 ```bash
 git clone https://github.com/DragonSCPOFICIAL/ULX.git
@@ -21,10 +47,42 @@ git clone https://github.com/DragonSCPOFICIAL/ULX.git
 && cd ULX
 # ↓ Entra na pasta ULX
 
-&& chmod +x examples/system_monitor
-# ↓ Dá permissão de execução ao programa
+&& chmod +x system-monitor
+# ↓ Dá permissão de execução ao programa compilado
 
-&& ./examples/system_monitor
+&& ./system-monitor
+# ↓ Executa o Monitor de Sistema
+```
+
+### **Opção 2:**
+
+```bash
+cd ULX
+# ↓ Entra na pasta ULX existente
+
+&& git pull origin main
+# ↓ Atualiza o repositório com a versão mais recente
+
+&& chmod +x system-monitor
+# ↓ Dá permissão de execução
+
+&& ./system-monitor
+# ↓ Executa o Monitor de Sistema
+```
+
+### **Opção 3:**
+
+```bash
+git clone https://github.com/DragonSCPOFICIAL/ULX.git ULX-novo
+# ↓ Clona em uma pasta nova chamada ULX-novo
+
+&& cd ULX-novo
+# ↓ Entra na pasta nova
+
+&& chmod +x system-monitor
+# ↓ Dá permissão de execução
+
+&& ./system-monitor
 # ↓ Executa o Monitor de Sistema
 ```
 
@@ -88,7 +146,13 @@ Pressione `Ctrl+C` para sair do programa.
 Se você já tem o repositório clonado, pode executar direto:
 
 ```bash
-cd ULX && ./examples/system_monitor
+cd ULX && ./system-monitor
+```
+
+Ou se clonou em pasta diferente:
+
+```bash
+cd ULX-novo && ./system-monitor
 ```
 
 ---
