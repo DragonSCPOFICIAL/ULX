@@ -71,13 +71,16 @@ class IntelligentOptimizer:
             'gcc',
             '-O3',
             '-Ofast',
-            '-march=native',
-            '-mtune=native',
         ]
         
-        # Paralelismo
+        # Flags nativas apenas se suportadas
+        flags.extend(['-march=native', '-mtune=native'])
+        
+        # Paralelismo (com verificação simples)
         if self.strategy['use_parallel']:
-            flags.extend(['-fopenmp', '-pthread'])
+            # Verifica se libgomp existe para evitar erro de linkagem
+            if os.path.exists('/usr/lib/libgomp.so') or os.path.exists('/usr/lib64/libgomp.so') or os.path.exists('/lib/x86_64-linux-gnu/libgomp.so.1'):
+                flags.extend(['-fopenmp', '-pthread'])
         
         # SIMD
         if self.strategy['use_simd']:

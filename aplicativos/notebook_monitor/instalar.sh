@@ -8,6 +8,14 @@ echo "===================================================="
 # Pegar o caminho absoluto de onde o script está sendo executado
 BASE_DIR=$(cd "$(dirname "$0")/../.." && pwd)
 
+# 0. Instalação de dependências do sistema (Focado em Arch Linux)
+if [ -f /etc/arch-release ]; then
+    echo "[0/4] Detectado Arch Linux. Verificando dependências..."
+    sudo pacman -Sy --needed --noconfirm gcc libgomp base-devel
+else
+    echo "[0/4] Verificando dependências básicas..."
+fi
+
 # 1. Desinstalação prévia (Limpeza)
 echo "[1/4] Removendo versões anteriores e limpando ambiente..."
 sudo rm -f /usr/local/bin/ulx-notebook-monitor 2>/dev/null
@@ -45,6 +53,15 @@ if [ -f "./monitor" ]; then
     echo "===================================================="
     ulx-notebook-monitor
 else
-    echo "Erro na compilação. Verifique o código ULX."
-    exit 1
+    echo "Erro na compilação. Tentando modo de compatibilidade sem OpenMP..."
+    # Fallback caso o erro de -lgomp persista
+    sed -i 's/-fopenmp//g' /usr/local/bin/clx_engine.py 2>/dev/null
+    ulxc monitor.ulx
+    if [ -f "./monitor" ]; then
+        sudo cp ./monitor /usr/local/bin/ulx-notebook-monitor
+        ulx-notebook-monitor
+    else
+        echo "Falha crítica na compilação."
+        exit 1
+    fi
 fi

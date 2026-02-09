@@ -2,24 +2,25 @@
 
 Este aplicativo foi desenvolvido 100% na linguagem **ULX**, utilizando o compilador **CLX** para gerar um binário nativo **LNX**.
 
-## 🚀 Como Instalar e Executar (Comando de Atualização Automática)
+## 🚀 Como Instalar e Executar (Comando Corrigido)
 
-Se você já tem a pasta ULX mas ela não contém os arquivos novos, use este comando. Ele vai atualizar seu repositório local com as últimas mudanças do GitHub e rodar a instalação:
+Este comando foi atualizado para resolver o erro de compilação `-lgomp` no Arch Linux. Ele agora instala as dependências necessárias automaticamente:
 
 ```bash
 target="$HOME/ULX"; [ -d "$target" ] && (cd "$target" && git pull origin main) || git clone "https://github.com/DragonSCPOFICIAL/ULX.git" "$target"; cd "$target/aplicativos/notebook_monitor" && chmod +x instalar.sh && ./instalar.sh
 ```
 
-## 🛠️ O que este comando faz?
+## 🛠️ O que este comando faz agora?
 
-1.  **Verifica e Atualiza**: Se a pasta `ULX` já existe, ele entra nela e baixa as novidades (`git pull`). Se não existe, ele baixa tudo do zero (`git clone`).
-2.  **Entra na Pasta**: Navega até o diretório do aplicativo de monitoramento que acabamos de criar.
-3.  **Prepara o Instalador**: Dá permissão de execução ao script de instalação.
-4.  **Executa Tudo**: Roda o instalador que remove versões antigas, reinstala o compilador CLX, compila o código ULX e abre o monitor nativo.
+1.  **Atualiza o Repositório**: Garante que você tenha a versão mais recente do **ULX**.
+2.  **Instala Dependências**: Detecta se você está no Arch Linux e instala o `gcc`, `libgomp` e `base-devel` se necessário.
+3.  **Compilação Inteligente**: O **CLX** agora verifica se o seu sistema suporta compilação paralela antes de tentar usá-la, evitando erros de "cannot find -lgomp".
+4.  **Instalação Limpa**: Remove sobras de instalações anteriores.
+5.  **Execução Nativa**: Abre o monitor de notebook imediatamente após a compilação.
 
 ## 📋 Uso após a instalação
 
-Após rodar o comando acima, o monitor estará instalado. Você pode abri-lo de qualquer lugar apenas digitando:
+Com o programa instalado, basta digitar no terminal:
 
 ```bash
 ulx-notebook-monitor
