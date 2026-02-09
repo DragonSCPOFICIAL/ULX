@@ -76,11 +76,8 @@ class IntelligentOptimizer:
         # Flags nativas apenas se suportadas
         flags.extend(['-march=native', '-mtune=native'])
         
-        # Paralelismo (com verificação simples)
-        if self.strategy['use_parallel']:
-            # Verifica se libgomp existe para evitar erro de linkagem
-            if os.path.exists('/usr/lib/libgomp.so') or os.path.exists('/usr/lib64/libgomp.so') or os.path.exists('/lib/x86_64-linux-gnu/libgomp.so.1'):
-                flags.extend(['-fopenmp', '-pthread'])
+        # Paralelismo removido para garantir compatibilidade universal sem libgomp
+        flags.append('-pthread')
         
         # SIMD
         if self.strategy['use_simd']:
@@ -116,14 +113,8 @@ class IntelligentOptimizer:
     
     def get_loop_optimization(self):
         """Retorna otimizações para loops"""
-        if self.strategy['use_parallel'] and self.strategy['cpu_cores'] >= 8:
-            return '#pragma omp parallel for simd collapse(2)'
-        elif self.strategy['use_parallel']:
-            return '#pragma omp parallel for'
-        elif self.strategy['use_simd']:
-            return '#pragma omp simd'
-        else:
-            return ''
+        # Pragmas OpenMP removidos para compatibilidade universal
+        return ''
 
 class CLXCompilerIntelligent:
     """Compilador inteligente que se adapta ao hardware"""
