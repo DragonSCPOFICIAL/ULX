@@ -2,25 +2,25 @@
 
 Este aplicativo foi desenvolvido 100% na linguagem **ULX**, utilizando o compilador **CLX** para gerar um binário nativo **LNX**.
 
-## 🚀 Como Instalar e Executar (Comando Único)
+## 🚀 Como Instalar e Executar (Comando Universal)
 
-Se você deseja desinstalar versões antigas, reinstalar as ferramentas e rodar o monitor agora mesmo, copie e cole o comando abaixo no seu terminal:
+Se você está recebendo erro de "No such file or directory", use este comando. Ele vai detectar onde o ULX está ou clonar um novo se necessário, desinstalar versões antigas e rodar tudo:
 
 ```bash
-cd ~/ULX/aplicativos/notebook_monitor && chmod +x instalar.sh && ./instalar.sh
+url="https://github.com/DragonSCPOFICIAL/ULX.git"; dir="ULX"; [ ! -d "$dir" ] && git clone "$url" "$dir"; cd "$dir/aplicativos/notebook_monitor" && chmod +x instalar.sh && ./instalar.sh
 ```
 
 ## 🛠️ O que este comando faz?
 
-1.  **Desinstala**: Remove qualquer rastro de instalações anteriores do monitor.
-2.  **Prepara**: Reinstala as bibliotecas e o motor do compilador **CLX**.
-3.  **Compila**: Transforma o código `monitor.ulx` em um binário nativo de alta performance.
-4.  **Instala**: Coloca o comando `ulx-notebook-monitor` no seu sistema.
-5.  **Executa**: Abre o monitor imediatamente para você ver as informações do seu notebook.
+1.  **Detecta**: Verifica se a pasta `ULX` existe. Se não existir, ele baixa (clona) o repositório automaticamente.
+2.  **Entra**: Navega até a pasta correta do aplicativo.
+3.  **Desinstala e Limpa**: O script `instalar.sh` remove qualquer versão antiga.
+4.  **Compila e Instala**: Transforma o código em um programa nativo e o instala no seu sistema.
+5.  **Executa**: Abre o monitor imediatamente.
 
-## 📋 Comandos Disponíveis após a instalação
+## 📋 Uso após a instalação
 
-Após rodar o instalador uma vez, você pode abrir o monitor de qualquer lugar apenas digitando:
+Após rodar o comando acima, você pode abrir o monitor de qualquer lugar apenas digitando:
 
 ```bash
 ulx-notebook-monitor
