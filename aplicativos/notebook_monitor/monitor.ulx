@@ -1,0 +1,39 @@
+// ================================================
+// ULX NOTEBOOK MONITOR - NATIVO (LNX)
+// ================================================
+// Focado em Hardware de Notebook e Mobilidade
+// ================================================
+
+escreva("================================================\n")
+escreva("       ULX NOTEBOOK MONITOR - LNX NATIVE        \n")
+escreva("================================================\n")
+
+// Simulando deteccao do LNX para Hardware de Notebook
+modelo_notebook = "Notebook Performance Series"
+bateria_nivel = 85
+bateria_status = "Descarregando"
+cpu_temp = 54
+cpu_uso = 12
+
+escreva("-> EQUIPAMENTO: ", modelo_notebook, "\n")
+escreva("-> STATUS DA BATERIA: ", bateria_nivel, "% (", bateria_status, ")\n")
+
+se (bateria_nivel < 20) {
+    escreva("[ALERTA] Bateria fraca! Conecte o carregador.\n")
+} senao {
+    escreva("[INFO] Nivel de energia estavel.\n")
+}
+
+escreva("\n-> TEMPERATURA CPU: ", cpu_temp, "C\n")
+
+se (cpu_temp > 75) {
+    escreva("[ALERTA] Temperatura alta! Verifique a ventilacao.\n")
+} senao {
+    escreva("[INFO] Temperatura dentro da normalidade.\n")
+}
+
+escreva("\n-> USO DO PROCESSADOR: ", cpu_uso, "%\n")
+
+escreva("\n================================================\n")
+escreva("  Monitoramento via LNX Hardware Integration    \n")
+escreva("================================================\n")

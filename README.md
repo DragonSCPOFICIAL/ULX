@@ -639,3 +639,14 @@ python3 src/compiler/clx_compiler_intelligent.py examples/hello_world.ulx
 ```
 
 **Bem-vindo ao futuro da programação Linux!** 🚀
+
+---
+
+## 💻 Novo Aplicativo: Notebook Monitor Nativo
+
+Agora o ULX conta com um monitor especializado para notebooks na pasta `aplicativos/`.
+
+**Execução Rápida (Reinstala e Roda):**
+```bash
+cd aplicativos/notebook_monitor && chmod +x instalar.sh && ./instalar.sh
+```

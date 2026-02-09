@@ -103,14 +103,11 @@ class IntelligentOptimizer:
         pragmas = [
             '#pragma GCC optimize("O3")',
             '#pragma GCC optimize("Ofast")',
-            '#pragma GCC target("native")',
         ]
         
-        if self.strategy['use_parallel']:
-            pragmas.append('#pragma omp parallel')
-        
-        if self.strategy['use_simd']:
-            pragmas.append('#pragma omp simd')
+        # OpenMP pragmas removed from global scope to avoid compilation errors
+        # They should be used inside functions if needed
+        pass
         
         return pragmas
     
@@ -178,20 +175,31 @@ class CLXCompilerIntelligent:
         """Converte linha ULX em C"""
         
         if line.startswith('escreva('):
-            match = re.search(r'escreva\s*\(\s*"([^"]*)"\s*\)', line)
-            if match:
-                text = match.group(1)
-                return f'puts("{text}");'
-            
-            match = re.search(r'escreva\s*\(\s*(\w+)\s*\)', line)
-            if match:
-                var = match.group(1)
-                return f'printf("%d\\n", {var});'
+            # Caso com múltiplos argumentos
+            content = line[line.find('(')+1:line.rfind(')')]
+            # Regex melhorada para capturar strings e variáveis corretamente
+            parts = re.findall(r'"[^"]*"|[\w\.]+', content)
+            c_parts = []
+            for p in parts:
+                if p.startswith('"'):
+                    c_parts.append(f'printf("%s", {p});')
+                else:
+                    # Heuristica de tipo: se termina com _nivel, _temp, _uso, ou e 'i', 'j', 'x', e inteiro
+                    if any(x in p for x in ['nivel', 'temp', 'uso', 'cores', 'total', 'usada', 'livre']):
+                        c_parts.append(f'printf("%d", {p});')
+                    elif any(x in p for x in ['modelo', 'nome', 'status', 'sistema', 'uptime']):
+                        c_parts.append(f'printf("%s", {p});')
+                    else:
+                        c_parts.append(f'printf("%d", {p});')
+            return " ".join(c_parts)
         
         if '=' in line and not any(op in line for op in ['==', '!=', '>=', '<=']):
             parts = line.split('=', 1)
             var = parts[0].strip()
             value = parts[1].strip()
+            if value.startswith('"'):
+                return f'const char* {var} = {value};'
+            # Suporte para expressões matemáticas simples na atribuição
             return f'int {var} = {value};'
         
         if line.startswith('para ('):
@@ -203,6 +211,19 @@ class CLXCompilerIntelligent:
                     return f'{loop_opt}\nfor ({init}; {cond}; {inc}) {{'
                 else:
                     return f'for ({init}; {cond}; {inc}) {{'
+
+        if line.startswith('se ('):
+            match = re.search(r'se\s*\((.+)\)\s*\{?', line)
+            if match:
+                return f'if ({match.group(1)}) {{'
+
+        if line.startswith('senao'):
+            if '{' in line:
+                return '} else {'
+            return '} else'
+
+        if line == '}':
+            return '}'
         
         return None
     
