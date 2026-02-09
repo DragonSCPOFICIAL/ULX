@@ -275,7 +275,8 @@ void generate_compiler_flags(HardwareProfile* profile, char* flags) {
     
     // Paralelismo
     if (profile->use_parallel) {
-        strcat(flags, "-fopenmp ");
+        // strcat(flags, "-fopenmp "); // Removido para compatibilidade universal sem libgomp
+        strcat(flags, "-pthread ");
     }
     
     // Vetorização
