@@ -1,45 +1,31 @@
 // ================================================
-// ULX NOTEBOOK MONITOR - INTERFACE PURA (LNX)
+// ULX NOTEBOOK MONITOR - INTERFACE ESTILIZADA
 // ================================================
 
-// Definindo Interface Grafica Nativa
-janela(600, 400)
-titulo("ULX Notebook Monitor - Nativo")
-cor_fundo("preto")
+limpar()
+escreva("╔════════════════════════════════════════════════╗\n")
+escreva("║         ULX SYSTEM MONITOR - NATIVO LNX        ║\n")
+escreva("╠════════════════════════════════════════════════╣\n")
 
-escreva("================================================\n")
-escreva("       ULX NOTEBOOK MONITOR - LNX NATIVE        \n")
-escreva("================================================\n")
+// Dados do Sistema
+modelo = "Notebook Performance Series"
+bateria = 85
+status = "Descarregando"
+temp = 54
+uso = 12
 
-// Simulando deteccao do LNX para Hardware de Notebook
-modelo_notebook = "Notebook Performance Series"
-bateria_nivel = 85
-bateria_status = "Descarregando"
-cpu_temp = 54
-cpu_uso = 12
+escreva("║  EQUIPAMENTO: ", modelo, "    ║\n")
+escreva("║  BATERIA: ", bateria, "% [", status, "]          ║\n")
+escreva("║  TEMPERATURA CPU: ", temp, "C                     ║\n")
+escreva("║  USO DO PROCESSADOR: ", uso, "%                  ║\n")
+escreva("╠════════════════════════════════════════════════╣\n")
 
-escreva("-> EQUIPAMENTO: ", modelo_notebook, "\n")
-escreva("-> STATUS DA BATERIA: ", bateria_nivel, "% (", bateria_status, ")\n")
-
-se (bateria_nivel < 20) {
-    escreva("[ALERTA] Bateria fraca! Conecte o carregador.\n")
+se (bateria < 20) {
+    escreva("║  [ALERTA] Bateria fraca! Conecte o cabo.       ║\n")
 } senao {
-    escreva("[INFO] Nivel de energia estavel.\n")
+    escreva("║  [INFO] Sistema operando normalmente.          ║\n")
 }
 
-escreva("\n-> TEMPERATURA CPU: ", cpu_temp, "C\n")
-
-se (cpu_temp > 75) {
-    escreva("[ALERTA] Temperatura alta! Verifique a ventilacao.\n")
-} senao {
-    escreva("[INFO] Temperatura dentro da normalidade.\n")
-}
-
-escreva("\n-> USO DO PROCESSADOR: ", cpu_uso, "%\n")
-
-escreva("\n================================================\n")
-escreva("  Monitoramento via LNX Hardware Integration    \n")
-escreva("================================================\n")
-
-escreva("\nPressione ENTER para sair...")
+escreva("╚════════════════════════════════════════════════╝\n")
+escreva("\nPressione ENTER para fechar a interface...")
 leia()
