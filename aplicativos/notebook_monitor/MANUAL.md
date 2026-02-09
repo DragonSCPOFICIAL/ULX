@@ -2,25 +2,26 @@
 
 Este aplicativo foi desenvolvido 100% na linguagem **ULX**, utilizando o compilador **CLX** para gerar um binário nativo **LNX**.
 
-## 🚀 Como Instalar e Executar (Comando Universal)
+## 🚀 Como Instalar e Executar (Comando Definitivo)
 
-Se você está recebendo erro de "No such file or directory", use este comando. Ele vai detectar onde o ULX está ou clonar um novo se necessário, desinstalar versões antigas e rodar tudo:
+Se você está recebendo erro de "No such file or directory", use este comando. Ele utiliza caminhos absolutos para garantir que o Linux encontre a pasta do ULX na sua pasta pessoal ($HOME), não importa onde você esteja no terminal:
 
 ```bash
-url="https://github.com/DragonSCPOFICIAL/ULX.git"; dir="ULX"; [ ! -d "$dir" ] && git clone "$url" "$dir"; cd "$dir/aplicativos/notebook_monitor" && chmod +x instalar.sh && ./instalar.sh
+url="https://github.com/DragonSCPOFICIAL/ULX.git"; target="$HOME/ULX"; [ ! -d "$target" ] && git clone "$url" "$target"; cd "$target/aplicativos/notebook_monitor" && chmod +x instalar.sh && ./instalar.sh
 ```
 
 ## 🛠️ O que este comando faz?
 
-1.  **Detecta**: Verifica se a pasta `ULX` existe. Se não existir, ele baixa (clona) o repositório automaticamente.
-2.  **Entra**: Navega até a pasta correta do aplicativo.
-3.  **Desinstala e Limpa**: O script `instalar.sh` remove qualquer versão antiga.
-4.  **Compila e Instala**: Transforma o código em um programa nativo e o instala no seu sistema.
-5.  **Executa**: Abre o monitor imediatamente.
+1.  **Localiza**: Usa o caminho `$HOME/ULX` para garantir que o repositório seja encontrado na sua pasta de usuário.
+2.  **Clona (se necessário)**: Se você ainda não tiver o ULX, ele baixa automaticamente.
+3.  **Navega**: Entra na pasta exata do aplicativo de monitoramento.
+4.  **Reinstala e Limpa**: O script `instalar.sh` remove versões antigas e atualiza o motor do compilador **CLX**.
+5.  **Compila e Instala**: Gera o binário nativo **LNX** e o instala no sistema.
+6.  **Executa**: Abre o monitor imediatamente.
 
 ## 📋 Uso após a instalação
 
-Após rodar o comando acima, você pode abrir o monitor de qualquer lugar apenas digitando:
+Após rodar o comando acima com sucesso, você pode abrir o monitor de qualquer lugar apenas digitando:
 
 ```bash
 ulx-notebook-monitor
