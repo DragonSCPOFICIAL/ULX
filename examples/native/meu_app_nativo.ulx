@@ -1,0 +1,10 @@
+// Meu Primeiro Aplicativo Nativo 100% ULX
+// Este programa não abrirá console e rodará direto no sistema
+
+escreva("Iniciando motor ULX...")
+escreva("Conectando com as peças do notebook via LNX...")
+
+// Comandos de interface que o CLX traduzirá para X11 nativo
+janela("Meu App Nativo", 800, 600)
+cor_fundo("Preto")
+texto("Olá, este é um programa nativo!", 100, 100)
