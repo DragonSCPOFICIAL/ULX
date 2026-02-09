@@ -168,6 +168,22 @@ class CLXCompilerIntelligent:
     def parse_line(self, line):
         """Converte linha ULX em C"""
         
+        # Comandos Graficos Nativos LNX
+        if line.startswith('janela('):
+            content = line[line.find('(')+1:line.rfind(')')]
+            parts = content.split(',')
+            w = parts[0].strip()
+            h = parts[1].strip()
+            return f'printf("[LNX_WINDOW] Criando janela %s x %s...\\n", "{w}", "{h}");'
+        
+        if line.startswith('titulo('):
+            t = line[line.find('(')+1:line.rfind(')')]
+            return f'printf("[LNX_TITLE] %s\\n", {t});'
+
+        if line.startswith('cor_fundo('):
+            c = line[line.find('(')+1:line.rfind(')')]
+            return f'printf("[LNX_BG_COLOR] %s\\n", {c});'
+
         if line.startswith('escreva('):
             # Caso com múltiplos argumentos
             content = line[line.find('(')+1:line.rfind(')')]

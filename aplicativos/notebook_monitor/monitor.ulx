@@ -1,8 +1,11 @@
 // ================================================
-// ULX NOTEBOOK MONITOR - NATIVO (LNX)
+// ULX NOTEBOOK MONITOR - INTERFACE PURA (LNX)
 // ================================================
-// Focado em Hardware de Notebook e Mobilidade
-// ================================================
+
+// Definindo Interface Grafica Nativa
+janela(600, 400)
+titulo("ULX Notebook Monitor - Nativo")
+cor_fundo("preto")
 
 escreva("================================================\n")
 escreva("       ULX NOTEBOOK MONITOR - LNX NATIVE        \n")
@@ -37,3 +40,6 @@ escreva("\n-> USO DO PROCESSADOR: ", cpu_uso, "%\n")
 escreva("\n================================================\n")
 escreva("  Monitoramento via LNX Hardware Integration    \n")
 escreva("================================================\n")
+
+escreva("\nPressione ENTER para fechar a interface...")
+leia()

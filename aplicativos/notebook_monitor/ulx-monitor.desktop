@@ -1,9 +1,9 @@
 [Desktop Entry]
 Name=ULX Notebook Monitor
 Comment=Monitor de Sistema Nativo ULX/LNX
-Exec=konsole --hold -e ulx-notebook-monitor
+Exec=ulx-notebook-monitor
 Icon=utilities-system-monitor
-Terminal=false
+Terminal=true
 Type=Application
 Categories=System;Monitor;
 Keywords=system;monitor;ulx;lnx;
