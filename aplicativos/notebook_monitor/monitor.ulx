@@ -41,5 +41,5 @@ escreva("\n================================================\n")
 escreva("  Monitoramento via LNX Hardware Integration    \n")
 escreva("================================================\n")
 
-escreva("\nPressione ENTER para fechar a interface...")
+escreva("\nPressione ENTER para sair...")
 leia()

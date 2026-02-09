@@ -184,6 +184,9 @@ class CLXCompilerIntelligent:
             c = line[line.find('(')+1:line.rfind(')')]
             return f'printf("[LNX_BG_COLOR] %s\\n", {c});'
 
+        if line.startswith('leia('):
+            return 'getchar();'
+
         if line.startswith('escreva('):
             # Caso com múltiplos argumentos
             content = line[line.find('(')+1:line.rfind(')')]
