@@ -2,25 +2,24 @@
 
 Este aplicativo foi desenvolvido 100% na linguagem **ULX**, utilizando o compilador **CLX** para gerar um binário nativo **LNX**.
 
-## 🚀 Como Instalar e Executar (Comando Corrigido)
+## 🚀 Como Instalar e Executar (Comando de Limpeza e Instalação)
 
-Este comando foi atualizado para resolver o erro de compilação `-lgomp` no Arch Linux. Ele agora instala as dependências necessárias automaticamente:
+Se você está recebendo erros de compilação ou de diretório, use este comando. Ele realiza uma limpeza completa no sistema, remove versões antigas problemáticas e instala a versão 100% estável:
 
 ```bash
-target="$HOME/ULX"; [ -d "$target" ] && (cd "$target" && git pull origin main) || git clone "https://github.com/DragonSCPOFICIAL/ULX.git" "$target"; cd "$target/aplicativos/notebook_monitor" && chmod +x instalar.sh && ./instalar.sh
+sudo rm -f /usr/local/bin/clx_engine.py /usr/local/bin/ulxc; target="$HOME/ULX"; rm -rf "$target"; git clone "https://github.com/DragonSCPOFICIAL/ULX.git" "$target"; cd "$target/aplicativos/notebook_monitor" && chmod +x instalar.sh && ./instalar.sh
 ```
 
-## 🛠️ O que este comando faz agora?
+## 🛠️ O que este comando faz?
 
-1.  **Atualiza o Repositório**: Garante que você tenha a versão mais recente do **ULX**.
-2.  **Instala Dependências**: Detecta se você está no Arch Linux e instala o `gcc`, `libgomp` e `base-devel` se necessário.
-3.  **Compilação Inteligente**: O **CLX** agora verifica se o seu sistema suporta compilação paralela antes de tentar usá-la, evitando erros de "cannot find -lgomp".
-4.  **Instalação Limpa**: Remove sobras de instalações anteriores.
-5.  **Execução Nativa**: Abre o monitor de notebook imediatamente após a compilação.
+1.  **Limpeza Total**: Remove o motor do compilador antigo e a pasta `ULX` para evitar conflitos de arquivos "sujos".
+2.  **Download Limpo**: Baixa a versão mais recente e corrigida (sem a dependência de `libgomp`).
+3.  **Instalação Estável**: Configura o novo compilador **CLX** e gera o binário nativo **LNX**.
+4.  **Execução Imediata**: Abre o monitor de notebook assim que a compilação termina.
 
 ## 📋 Uso após a instalação
 
-Com o programa instalado, basta digitar no terminal:
+Após a conclusão, o monitor estará instalado globalmente. Você pode abri-lo de qualquer lugar apenas digitando:
 
 ```bash
 ulx-notebook-monitor
