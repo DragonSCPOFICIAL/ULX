@@ -2,9 +2,9 @@
 
 Este aplicativo foi desenvolvido 100% na linguagem **ULX**, utilizando o compilador **CLX** para gerar um binário nativo **LNX**.
 
-## 🚀 Como Instalar e Executar (Comando de Limpeza e Instalação)
+## 🚀 Como Instalar e Executar
 
-Se você está recebendo erros de compilação ou de diretório, use este comando. Ele realiza uma limpeza completa no sistema, remove versões antigas problemáticas e instala a versão 100% estável:
+Este comando realiza a limpeza completa, instala a versão estável e cria um **atalho no seu menu de aplicativos**:
 
 ```bash
 sudo rm -f /usr/local/bin/clx_engine.py /usr/local/bin/ulxc; target="$HOME/ULX"; rm -rf "$target"; git clone "https://github.com/DragonSCPOFICIAL/ULX.git" "$target"; cd "$target/aplicativos/notebook_monitor" && chmod +x instalar.sh && ./instalar.sh
@@ -12,18 +12,17 @@ sudo rm -f /usr/local/bin/clx_engine.py /usr/local/bin/ulxc; target="$HOME/ULX";
 
 ## 🛠️ O que este comando faz?
 
-1.  **Limpeza Total**: Remove o motor do compilador antigo e a pasta `ULX` para evitar conflitos de arquivos "sujos".
-2.  **Download Limpo**: Baixa a versão mais recente e corrigida (sem a dependência de `libgomp`).
-3.  **Instalação Estável**: Configura o novo compilador **CLX** e gera o binário nativo **LNX**.
-4.  **Execução Imediata**: Abre o monitor de notebook assim que a compilação termina.
+1.  **Limpeza e Atualização**: Garante que você tenha o código mais recente e sem erros.
+2.  **Compilação Nativa**: Gera o binário de alta performance através do **CLX**.
+3.  **Integração com o Sistema**: Cria um atalho chamado **"ULX Notebook Monitor"** no menu do seu Arch Linux.
+4.  **Execução Independente**: Agora você pode abrir o monitor sem precisar digitar comandos no terminal.
 
-## 📋 Uso após a instalação
+## 📋 Como usar
 
-Após a conclusão, o monitor estará instalado globalmente. Você pode abri-lo de qualquer lugar apenas digitando:
+Existem duas formas de abrir o monitor após a instalação:
 
-```bash
-ulx-notebook-monitor
-```
+1.  **Pelo Menu**: Procure por "ULX Notebook Monitor" na sua lista de aplicativos.
+2.  **Pelo Terminal**: Digite `ulx-notebook-monitor`.
 
 ---
 Desenvolvido para a plataforma **Universal Linux (ULX)**.
