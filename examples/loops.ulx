@@ -1,4 +1,0 @@
-// Contagem de 1 a 10
-para (i = 1; i <= 10; i = i + 1) {
-    escreva(i)
-}

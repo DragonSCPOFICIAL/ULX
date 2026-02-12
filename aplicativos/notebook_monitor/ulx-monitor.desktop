@@ -1,9 +1,0 @@
-[Desktop Entry]
-Name=ULX Notebook Monitor
-Comment=Monitor de Sistema Nativo ULX/LNX
-Exec=ulx-notebook-monitor
-Icon=utilities-system-monitor
-Terminal=true
-Type=Application
-Categories=System;Monitor;
-Keywords=system;monitor;ulx;lnx;

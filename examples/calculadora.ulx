@@ -1,7 +1,0 @@
-a = 10
-b = 5
-
-escreva("Soma: " + (a + b))
-escreva("Subtração: " + (a - b))
-escreva("Multiplicação: " + (a * b))
-escreva("Divisão: " + (a / b))

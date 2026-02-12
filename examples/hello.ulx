@@ -1,3 +1,0 @@
-func main() {
-    print("Olá do ULX! Este é um programa nativo e universal.")
-}

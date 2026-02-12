@@ -1,652 +1,303 @@
-# ULX - Universal Linux
+# ULX - Universal Linux eXecution
 
-## O Que É ULX?
+## A Linguagem de Programação Universal para Linux
 
-**ULX** é uma linguagem de programação revolucionária que torna a criação de aplicativos para Linux **extremamente fácil, rápida e poderosa**.
+ULX é uma linguagem de programação revolucionária projetada para tornar o desenvolvimento de aplicativos para Linux extremamente fácil, rápido e poderoso.
+
+## 🎯 Visão
+
+Transformar cada usuário de Linux em um criador. Queremos que criar um aplicativo seja tão fácil quanto escrever um bilhete, e que compartilhar esse app seja tão simples quanto enviar um arquivo.
+
+## 🏗️ Arquitetura
+
+ULX é composta por três camadas principais:
 
 ```
-ULX Code (Fácil)
-    ↓
-CLX Compiler (Inteligente)
-    ↓
-LNX Hardware (Otimizado)
-    ↓
-Binário Linux Nativo (Rápido)
+┌─────────────────────────────────────────────────────────────┐
+│                        ULX (Linguagem)                       │
+│              Sintaxe simples e intuitiva em português        │
+└─────────────────────────────────────────────────────────────┘
+                              │
+                              ▼
+┌─────────────────────────────────────────────────────────────┐
+│                        CLX (Compilador)                      │
+│         Compilador inteligente com IR próprio (SSA)          │
+└─────────────────────────────────────────────────────────────┘
+                              │
+                              ▼
+┌─────────────────────────────────────────────────────────────┐
+│                        LNX (Runtime)                         │
+│    Syscalls diretas do Linux - sem dependências de libc      │
+└─────────────────────────────────────────────────────────────┘
 ```
 
-## A Trindade: ULX, CLX, LNX
+## ✨ Características
 
-### **ULX - Universal Linux (A Linguagem)**
+- **Sintaxe em Português**: `se`, `senao`, `enquanto`, `para`, `funcao`, `retorne`
+- **Syscalls Diretas**: Comunicação direta com o kernel Linux
+- **Zero Dependências**: Binários standalone que rodam em qualquer Linux
+- **Performance Nativa**: Código compilado para x86-64 com otimizações
+- **Type Safety**: Sistema de tipos estático com inferência
 
-A linguagem que você escreve. Super simples, intuitiva e poderosa.
-
-```ulx
-// Ler arquivo
-arquivo = abre("/etc/passwd")
-conteudo = le(arquivo)
-escreva(conteudo)
-fecha(arquivo)
-```
-
-**Características:**
-- ✅ Sintaxe super simples
-- ✅ Sem complexidade desnecessária
-- ✅ Fácil de aprender
-- ✅ Poderosa e expressiva
-
-### **CLX - Compilador (O Intermediador)**
-
-Traduz ULX em binário nativo otimizado para seu hardware.
-
-**Responsabilidades:**
-- ✅ Parse da sintaxe ULX
-- ✅ Análise semântica
-- ✅ Geração de código C otimizado
-- ✅ Compilação com flags inteligentes
-- ✅ Detecção de hardware automática
-
-### **LNX - Linux Hardware (O Executor)**
-
-Integra-se diretamente com o kernel Linux para máxima performance.
-
-**Responsabilidades:**
-- ✅ Detecta todo hardware (CPU, GPU, RAM, etc)
-- ✅ Adapta-se automaticamente
-- ✅ Usa syscalls diretos do kernel
-- ✅ Otimizações zero-copy
-- ✅ Compatibilidade universal
-
-## Início Rápido (Um Comando!)
-
-### Opção 1: Usar o Binário Compilado (Mais Rápido)
-
-**Copie e cole este comando no seu terminal:**
+## 🚀 Instalação
 
 ```bash
-git clone https://github.com/DragonSCPOFICIAL/ULX.git && cd ULX && chmod +x system-monitor && ./system-monitor
-```
-
-**Pronto! O Monitor de Sistema está rodando!** 🚀
-
-### Opção 2: Clonar e Usar os Exemplos
-
-```bash
-git clone https://github.com/DragonSCPOFICIAL/ULX.git && cd ULX && chmod +x examples/system_monitor && ./examples/system_monitor
-```
-
-Para mais detalhes, veja [QUICKSTART.md](./QUICKSTART.md)
-
----
-
-## Instalar como Programa de Sistema
-
-**Transforme o executável em um programa instalado que funciona de qualquer lugar:**
-
-### Passo 1: Clonar o repositório
-
-```bash
-git clone https://github.com/DragonSCPOFICIAL/ULX.git && cd ULX
-```
-
-### Passo 2: Executar o instalador
-
-```bash
-sudo bash install.sh
-```
-
-### Passo 3: Pronto! Use em qualquer lugar
-
-```bash
-ulx-monitor
-```
-
----
-
-## 🎉 NOVO: Janela Gráfica Nativa X11 com ULX!
-
-Agora o ULX System Monitor abre uma **janela gráfica de VERDADE** usando X11 direto!
-
-- ✅ **Janela nativa** (não é console/terminal)
-- ✅ **Sem dependências** de GTK, Qt ou outras bibliotecas
-- ✅ **Usando X11 direto** (syscalls do Linux)
-- ✅ **Compilado com CLX** (Compilador ULX)
-- ✅ **Executado em LNX** (Linux Native)
-- ✅ **Reconhecido como programa** pelo sistema
-- ✅ **Design moderno** com cores e cards
-- ✅ **Interface gráfica profissional**
-
----
-
-## Comando Único de Reinstalação Completa
-
-**COPIE E COLE ESTE COMANDO PARA INSTALAR TUDO DE UMA VEZ:**
-
-```bash
-sudo uninstall-ulx-monitor 2>/dev/null; rm -rf ~/ULX ~/ULX-novo; git clone https://github.com/DragonSCPOFICIAL/ULX.git ~/ULX && cd ~/ULX && sudo bash install.sh && ulx-monitor
-```
-
-**Este comando faz TUDO automaticamente:**
-1. ❌ Remove a versão antiga (se existir)
-2. 📁 Clona o repositório novo (com GUI 100% em ULX)
-3. 💾 Instala como programa de sistema
-4. 🚀 Executa o programa com interface gráfica
-
----
-
-## Comandos Predefinidos
-
-**Copie e cole qualquer um destes comandos:**
-
-> **⚠️ IMPORTANTE:** Se receber erro "destination path 'ULX' already exists", use o comando da seção "SOLUÇÃO" abaixo!
-
-### 🚀 Instalar e Executar (Recomendado - Primeira Vez)
-
-```bash
-git clone https://github.com/DragonSCPOFICIAL/ULX.git && cd ULX && chmod +x system-monitor && ./system-monitor
-```
-
-### 💾 Instalar como Programa de Sistema (Primeira Vez)
-
-```bash
-git clone https://github.com/DragonSCPOFICIAL/ULX.git && cd ULX && sudo bash install.sh
-```
-
-### 🚀 Executar Programa Instalado (De Qualquer Lugar)
-
-```bash
-ulx-monitor
-```
-
-### 📄 Ver Documentação
-
-```bash
-man ulx-monitor
-```
-
-### 🔄 Atualizar para a Última Versão
-
-```bash
-cd ULX && git pull origin main && sudo bash install.sh
-```
-
-### ❌ Desinstalar o Programa
-
-```bash
-sudo uninstall-ulx-monitor
-```
-
-### 📁 Clonar em Pasta Diferente
-
-```bash
-git clone https://github.com/DragonSCPOFICIAL/ULX.git ULX-novo && cd ULX-novo && chmod +x system-monitor && ./system-monitor
-```
-
-### 🔓 Se Já Tem a Pasta Clonada
-
-```bash
-cd ULX && git pull origin main && chmod +x system-monitor && ./system-monitor
-```
-
-### 💾 Instalar Globalmente (Adicionar ao PATH)
-
-```bash
-sudo cp ULX/system-monitor /usr/local/bin/ulx-monitor && ulx-monitor
-```
-
-### 🔍 Verificar Versão Instalada
-
-```bash
-which ulx-monitor && file $(which ulx-monitor)
-```
-
-### 🗑️ Remover Pasta Clonada (Após Instalar)
-
-```bash
-rm -rf ULX
-```
-
-### 🔄 Reinstalação Completa (Remover Tudo e Instalar de Novo)
-
-```bash
-sudo uninstall-ulx-monitor 2>/dev/null; rm -rf ~/ULX ~/ULX-novo; git clone https://github.com/DragonSCPOFICIAL/ULX.git ~/ULX && cd ~/ULX && sudo bash install.sh && ulx-monitor
-```
-
----
-
-## ⚠️ SOLUÇÃO: Erro "destination path 'ULX' already exists"
-
-**Se você recebeu este erro, escolha UMA das opções abaixo:**
-
-### Opção A: Remover a Pasta Antiga e Clonar Novamente
-
-```bash
-rm -rf ULX && git clone https://github.com/DragonSCPOFICIAL/ULX.git && cd ULX && chmod +x system-monitor && ./system-monitor
-```
-
-### Opção B: Atualizar a Pasta Existente (RECOMENDADO)
-
-```bash
-cd ULX && git pull origin main && chmod +x system-monitor && ./system-monitor
-```
-
-### Opção C: Instalar a Versão Existente como Programa de Sistema
-
-```bash
-cd ULX && sudo bash install.sh
-```
-
-### Opção D: Clonar em Uma Pasta Com Nome Diferente
-
-```bash
-git clone https://github.com/DragonSCPOFICIAL/ULX.git ULX-novo && cd ULX-novo && chmod +x system-monitor && ./system-monitor
-```
-
----
-
-## Usar o Programa Instalado
-
-### Executar de qualquer lugar
-
-```bash
-ulx-monitor
-```
-
-### Ver documentação
-
-```bash
-man ulx-monitor
-```
-
-### Desinstalar
-
-```bash
-sudo uninstall-ulx-monitor
-```
-
----
-
-## Instalação
-
-### Requisitos
-
-- Linux (qualquer distribuição)
-- Python 3.8+
-- GCC ou Clang
-- Git
-
-### Instalação Rápida
-
-```bash
+# Clonar repositório
 git clone https://github.com/DragonSCPOFICIAL/ULX.git
 cd ULX
-python3 src/compiler/clx_compiler_intelligent.py examples/hello_world.ulx
-./examples/hello_world
+
+# Compilar compilador
+make build
+
+# Instalar
+sudo make install
 ```
 
-### Instalação Completa
-
-```bash
-git clone https://github.com/DragonSCPOFICIAL/ULX.git
-cd ULX
-chmod +x INSTALL.sh
-./INSTALL.sh
-```
-
-## Uso Rápido
-
-### 1. Criar um Arquivo ULX
-
-```bash
-cat > meu_programa.ulx << 'EOF'
-escreva("Olá, mundo!")
-
-a = 10
-b = 20
-c = a + b
-escreva(c)
-
-para (i = 1; i <= 5; i = i + 1) {
-    escreva(i)
-}
-EOF
-```
-
-### 2. Compilar
-
-```bash
-python3 src/compiler/clx_compiler_intelligent.py meu_programa.ulx
-```
-
-### 3. Executar
-
-```bash
-./meu_programa
-```
-
-## Exemplos
-
-### Hello World
+## 📝 Exemplo de Código
 
 ```ulx
-escreva("Olá, mundo!")
-```
-
-### Variáveis e Operações
-
-```ulx
-a = 10
-b = 20
-c = a + b
-escreva(c)
-```
-
-### Loops
-
-```ulx
-para (i = 1; i <= 10; i = i + 1) {
-    escreva(i)
+// Hello World em ULX
+funcao main() {
+    escreva("Hello, ULX World!");
+    retorne 0;
 }
 ```
 
-### Condicionais
+```ulx
+// Calculadora simples
+funcao soma(a: inteiro, b: inteiro): inteiro {
+    retorne a + b;
+}
+
+funcao main() {
+    var x: inteiro = 10;
+    var y: inteiro = 20;
+    var resultado: inteiro = soma(x, y);
+    escreva(resultado);
+    retorne 0;
+}
+```
 
 ```ulx
-idade = 18
+// Fatorial com recursão
+funcao fatorial(n: inteiro): inteiro {
+    se (n <= 1) {
+        retorne 1;
+    }
+    retorne n * fatorial(n - 1);
+}
 
-se (idade >= 18) {
-    escreva("Maior de idade")
+funcao main() {
+    escreva(fatorial(5));  // 120
+    retorne 0;
+}
+```
+
+```ulx
+// Manipulação de arquivos
+funcao main() {
+    var arquivo = abre("/etc/passwd");
+    var conteudo = le(arquivo);
+    escreva(conteudo);
+    fecha(arquivo);
+    retorne 0;
+}
+```
+
+## 🔧 Compilação
+
+```bash
+# Compilar arquivo ULX
+ulxc arquivo.ulx -o programa
+
+# Ver IR gerado
+ulxc arquivo.ulx --emit-ir
+
+# Compilar e executar
+ulxc arquivo.ulx --run
+```
+
+## 📚 Sintaxe
+
+### Tipos de Dados
+
+| ULX | Descrição | C Equivalente |
+|-----|-----------|---------------|
+| `inteiro` | Inteiro 32-bit | `int32_t` |
+| `real` | Ponto flutuante 64-bit | `double` |
+| `texto` | String | `char*` |
+| `booleano` | Booleano | `int8_t` |
+
+### Declarações
+
+```ulx
+// Variáveis
+var x: inteiro = 10;
+var y = 20;  // Inferência de tipo
+
+// Constantes
+const PI: real = 3.14159;
+
+// Funções
+funcao nome(param: tipo): tipo_retorno {
+    // corpo
+    retorne valor;
+}
+```
+
+### Controle de Fluxo
+
+```ulx
+// Condicional
+se (condicao) {
+    // código
 } senao {
-    escreva("Menor de idade")
+    // código
+}
+
+// While
+enquanto (condicao) {
+    // código
+}
+
+// For
+para (var i: inteiro = 0; i < 10; i = i + 1) {
+    // código
 }
 ```
 
-### Funções
+### Operadores
 
-```ulx
-funcao saudacao(nome) {
-    escreva("Olá, ")
-    escreva(nome)
+| Operador | Descrição |
+|----------|-----------|
+| `+` | Adição |
+| `-` | Subtração |
+| `*` | Multiplicação |
+| `/` | Divisão |
+| `%` | Módulo |
+| `==` | Igual |
+| `!=` | Diferente |
+| `<`, `>`, `<=`, `>=` | Comparação |
+| `&&` | AND lógico |
+| `\|\|` | OR lógico |
+| `!` | NOT lógico |
+
+## 🏛️ Arquitetura do Compilador
+
+```
+Código Fonte ULX
+       │
+       ▼
+┌─────────────┐
+│    Lexer    │  → Tokens
+└─────────────┘
+       │
+       ▼
+┌─────────────┐
+│   Parser    │  → AST
+└─────────────┘
+       │
+       ▼
+┌─────────────┐
+│ Type Checker│  → AST tipada
+└─────────────┘
+       │
+       ▼
+┌─────────────┐
+│  AST to IR  │  → ULX-IR (SSA)
+└─────────────┘
+       │
+       ▼
+┌─────────────┐
+│   CodeGen   │  → Assembly x86-64
+└─────────────┘
+       │
+       ▼
+┌─────────────┐
+│    Linker   │  → ELF64
+└─────────────┘
+       │
+       ▼
+   Binário
+```
+
+## 🔬 ULX-IR
+
+ULX-IR é a representação intermediária em forma SSA (Static Single Assignment):
+
+```llvm
+; Exemplo de IR
+define i32 @main() {
+entry:
+    %x = alloca i32
+    store i32 42, i32* %x
+    %0 = load i32, i32* %x
+    %1 = add i32 %0, 10
+    ret i32 %1
 }
-
-saudacao("João")
 ```
 
-### Leitura de Arquivo
+## 🐧 Syscalls Diretas
 
-```ulx
-arquivo = abre("/etc/passwd")
-conteudo = le(arquivo)
-escreva(conteudo)
-fecha(arquivo)
+ULX usa syscalls diretas do Linux sem passar pela libc:
+
+```asm
+; sys_write(fd=1, buf=msg, count=len)
+mov rax, 1      ; __NR_write
+mov rdi, 1      ; stdout
+mov rsi, msg    ; buffer
+mov rdx, len    ; count
+syscall
 ```
 
-### Servidor HTTP Simples
-
-```ulx
-socket = cria_socket()
-conecta(socket, "0.0.0.0", 8080)
-escuta(socket, 10)
-
-para (i = 0; i < 100; i = i + 1) {
-    cliente = aceita(socket)
-    escreva("Cliente conectado")
-    fecha(cliente)
-}
-
-fecha(socket)
-```
-
-## Documentação
-
-- **[ARCHITECTURE.md](./ARCHITECTURE.md)** - Arquitetura de ULX
-- **[ULX_SYNTAX.md](./ULX_SYNTAX.md)** - Sintaxe completa
-- **[LINUX_UNIVERSAL.md](./LINUX_UNIVERSAL.md)** - Compatibilidade universal
-- **[KERNEL_INTEGRATION.md](./KERNEL_INTEGRATION.md)** - Integração com kernel
-- **[EXTENDING_ULX.md](./EXTENDING_ULX.md)** - Como estender ULX
-
-## Estrutura do Projeto
+## 📁 Estrutura do Projeto
 
 ```
 ULX/
-├── system-monitor                         ⭐ BINÁRIO COMPILADO (Pronto para usar!)
 ├── src/
 │   └── compiler/
-│       ├── clx_compiler.py                (Compilador base)
-│       └── clx_compiler_intelligent.py    (Compilador inteligente)
+│       ├── ulxc.py           # Compilador principal
+│       ├── ulx_parser.py     # Parser
+│       ├── ulx_ir.py         # IR e Builder
+│       ├── ulx_codegen.py    # Gerador de código
+│       └── elf_generator.py  # Gerador ELF
 ├── core/
 │   └── lnx/
-│       ├── linux_kernel_integration.c     (Integração com kernel)
-│       ├── hardware_detector.c            (Detecção de hardware)
-│       └── universal_hardware_detector.py (Detector universal)
-├── stdlib/
-│   ├── linux_syscalls.c                   (Syscalls do Linux)
-│   └── ulx_stdlib.c                       (Biblioteca padrão)
-├── examples/
-│   ├── hello_world.ulx                    (Hello World)
-│   ├── calculadora.ulx                    (Calculadora)
-│   ├── loops.ulx                          (Loops)
-│   ├── jogo_adivinhacao.ulx               (Jogo)
-│   └── system_monitor.ulx                 (Código-fonte do Monitor)
-├── README.md                              (Este arquivo)
-├── QUICKSTART.md                          (Início Rápido)
-├── ARCHITECTURE.md                        (Arquitetura)
-├── ULX_SYNTAX.md                          (Sintaxe)
-├── LINUX_UNIVERSAL.md                     (Compatibilidade)
-├── KERNEL_INTEGRATION.md                  (Kernel)
-└── EXTENDING_ULX.md                       (Extensão)
+│       ├── lnx_syscall.asm   # Syscalls em assembly
+│       └── lnx_syscall.h     # Header C
+├── examples/                  # Exemplos ULX
+├── docs/                      # Documentação
+└── tests/                     # Testes
 ```
 
-## Performance
+## 🧪 Testes
 
-### Comparação com Outras Linguagens
+```bash
+# Rodar todos os testes
+make test
 
-| Operação | C Puro | ULX | Python | JavaScript |
-|----------|--------|-----|--------|------------|
-| Ler arquivo 1GB | 500ms | 450ms | 5000ms | 8000ms |
-| Servidor HTTP | 10k req/s | 12k req/s | 1k req/s | 2k req/s |
-| Processamento paralelo | 2000ms | 800ms | 3000ms | 5000ms |
-
-**ULX é tão rápido quanto C porque usa syscalls diretos do kernel!**
-
-## Características
-
-### ✅ Simplicidade
-
-- Sintaxe super simples
-- Fácil de aprender
-- Sem abstrações desnecessárias
-
-### ✅ Performance
-
-- Tão rápido quanto C
-- Otimizações automáticas
-- Zero overhead
-
-### ✅ Compatibilidade
-
-- Funciona em qualquer Linux
-- Qualquer distribuição
-- Qualquer arquitetura
-
-### ✅ Inteligência
-
-- Detecta hardware automaticamente
-- Adapta-se ao seu sistema
-- Otimiza para máxima performance
-
-### ✅ Modularidade
-
-- Código reutilizável
-- Extensível
-- Outras linguagens podem usar como base
-
-## Casos de Uso
-
-### 1. Ferramentas de Sistema
-
-```ulx
-// ls em ULX
-diretorio = abre(".")
-arquivo = le_dir(diretorio)
-enquanto (arquivo != "") {
-    escreva(arquivo)
-    arquivo = le_dir(diretorio)
-}
+# Testar exemplo específico
+ulxc examples/hello_world.ulx --run
 ```
 
-### 2. Servidores
+## 🤝 Contribuindo
 
-```ulx
-// Servidor web em ULX
-socket = cria_socket()
-conecta(socket, "0.0.0.0", 8080)
-escuta(socket, 100)
-```
+1. Fork o projeto
+2. Crie uma branch (`git checkout -b feature/nova-feature`)
+3. Commit suas mudanças (`git commit -am 'Add nova feature'`)
+4. Push para a branch (`git push origin feature/nova-feature`)
+5. Abra um Pull Request
 
-### 3. Processamento de Dados
+## 📜 Licença
 
-```ulx
-// Processa arquivo grande
-arquivo = abre("/data/grande.bin")
-enquanto (nao_fim(arquivo)) {
-    bloco = le(arquivo, 4096)
-    processa(bloco)
-}
-```
+MIT License - veja [LICENSE](LICENSE) para detalhes.
 
-### 4. Administração de Sistema
+## 🙏 Agradecimentos
 
-```ulx
-// Monitora processos
-processos = lista_processos()
-para (i = 0; i < tamanho(processos); i = i + 1) {
-    escreva(processos[i])
-}
-```
-
-## Suporte a Hardware
-
-### CPU
-
-- ✅ Intel x86-64
-- ✅ AMD x86-64
-- ✅ ARM 32-bit
-- ✅ ARM 64-bit
-- ✅ RISC-V
-- ✅ PowerPC
-- ✅ MIPS
-
-### GPU
-
-- ✅ NVIDIA CUDA
-- ✅ AMD ROCm
-- ✅ Intel Integrated
-- ✅ ARM Mali
-- ✅ Qualcomm Adreno
-- ✅ Vulkan
-- ✅ OpenCL
-
-### Dispositivos
-
-- ✅ Desktop
-- ✅ Notebook
-- ✅ Servidor
-- ✅ Celular/Android
-- ✅ Raspberry Pi
-- ✅ Qualquer Linux
-
-## Segurança
-
-### Sandbox Nativo
-
-- ✅ LNX verifica todas as syscalls
-- ✅ Isolamento de memória
-- ✅ Proteção contra buffer overflow
-- ✅ Validação de entrada
-
-### Código Aberto
-
-- ✅ Tudo é auditável
-- ✅ Sem backdoors
-- ✅ Comunidade pode revisar
-- ✅ Transparência total
-
-## Comunidade
-
-- **GitHub**: https://github.com/DragonSCPOFICIAL/ULX
-- **Issues**: Reporte bugs e sugestões
-- **Discussions**: Discuta ideias
-- **Contribuições**: Pull requests bem-vindos
-
-## Roadmap
-
-### v1.0 (Atual)
-
-- ✅ Compilador básico
-- ✅ Sintaxe fundamental
-- ✅ Detecção de hardware
-- ✅ Integração com kernel
-- ✅ Exemplos funcionais
-
-### v1.1 (Próximo)
-
-- 🔄 Otimizações avançadas
-- 🔄 Mais exemplos
-- 🔄 Documentação expandida
-- 🔄 Testes automatizados
-
-### v2.0 (Futuro)
-
-- 🔄 Suporte a threads
-- 🔄 Async/await
-- 🔄 Garbage collection
-- 🔄 IDE integrada
-
-## Licença
-
-MIT License - Veja [LICENSE](./LICENSE) para detalhes.
-
-## Autor
-
-**DragonSCPOFICIAL**
-
-## Conclusão
-
-**ULX é a linguagem para Linux universal:**
-
-- ✅ Funciona em qualquer dispositivo Linux
-- ✅ Sem dependências externas
-- ✅ Compatibilidade 100% garantida
-- ✅ Performance de C puro
-- ✅ Sintaxe super simples
-
-**Escreva uma vez, rode em qualquer Linux.**
+- Linux Kernel Community
+- LLVM Project
+- Rust Compiler Team
 
 ---
 
-## Comece Agora
-
-```bash
-# Clone o repositório
-git clone https://github.com/DragonSCPOFICIAL/ULX.git
-cd ULX
-
-# Compile um exemplo
-python3 src/compiler/clx_compiler_intelligent.py examples/hello_world.ulx
-
-# Execute
-./examples/hello_world
-```
-
-**Bem-vindo ao futuro da programação Linux!** 🚀
-
----
-
-## 💻 Novo Aplicativo: Notebook Monitor Nativo
-
-Agora o ULX conta com um monitor especializado para notebooks na pasta `aplicativos/`.
-
-**Execução Rápida (Reinstala e Roda):**
-```bash
-cd aplicativos/notebook_monitor && chmod +x instalar.sh && ./instalar.sh
-```
+**ULX** - *Linux é de todos. Sem frescura, apenas criação.*
