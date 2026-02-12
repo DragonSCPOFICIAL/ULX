@@ -1,0 +1,7 @@
+// Exemplo: Hello World em ULX
+// Demonstra a sintaxe básica da linguagem
+
+funcao main() {
+    escreva("Hello, ULX World!");
+    retorne 0;
+}

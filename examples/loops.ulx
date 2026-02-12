@@ -1,0 +1,31 @@
+// Exemplo: Loops em ULX
+// Demonstra while, for e nested loops
+
+funcao main() {
+    var i: inteiro;
+    
+    // While loop
+    escreva("=== While ===");
+    i = 0;
+    enquanto (i < 5) {
+        escreva(i);
+        i = i + 1;
+    }
+    
+    // For loop
+    escreva("=== For ===");
+    para (i = 0; i < 5; i = i + 1) {
+        escreva(i);
+    }
+    
+    // Nested loops
+    escreva("=== Nested ===");
+    var j: inteiro;
+    para (i = 0; i < 3; i = i + 1) {
+        para (j = 0; j < 3; j = j + 1) {
+            escreva(i * 3 + j);
+        }
+    }
+    
+    retorne 0;
+}

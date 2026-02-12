@@ -1,0 +1,30 @@
+// Exemplo: Fatorial em ULX
+// Demonstra recursão e condicionais
+
+funcao fatorial(n: inteiro): inteiro {
+    se (n <= 1) {
+        retorne 1;
+    }
+    retorne n * fatorial(n - 1);
+}
+
+funcao fatorial_iterativo(n: inteiro): inteiro {
+    var resultado: inteiro = 1;
+    var i: inteiro = 1;
+    
+    enquanto (i <= n) {
+        resultado = resultado * i;
+        i = i + 1;
+    }
+    
+    retorne resultado;
+}
+
+funcao main() {
+    var num: inteiro = 5;
+    
+    escreva(fatorial(num));
+    escreva(fatorial_iterativo(num));
+    
+    retorne 0;
+}

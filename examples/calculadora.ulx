@@ -1,0 +1,30 @@
+// Exemplo: Calculadora simples em ULX
+// Demonstra variáveis, operadores e funções
+
+funcao soma(a: inteiro, b: inteiro): inteiro {
+    retorne a + b;
+}
+
+funcao subtracao(a: inteiro, b: inteiro): inteiro {
+    retorne a - b;
+}
+
+funcao multiplicacao(a: inteiro, b: inteiro): inteiro {
+    retorne a * b;
+}
+
+funcao divisao(a: inteiro, b: inteiro): inteiro {
+    retorne a / b;
+}
+
+funcao main() {
+    var x: inteiro = 10;
+    var y: inteiro = 5;
+    
+    escreva(soma(x, y));
+    escreva(subtracao(x, y));
+    escreva(multiplicacao(x, y));
+    escreva(divisao(x, y));
+    
+    retorne 0;
+}
