@@ -20,20 +20,17 @@ Após estar no diretório **ULX**, copie e cole **TODO** o bloco abaixo no seu t
 ```bash
 # --- INÍCIO DO BLOCO DE INSTALAÇÃO ULX UNIVERSAL ---
 
-# Sair imediatamente se um comando falhar
-set -e
-
 # Dar permissão de execução ao script principal
-chmod +x install.sh || { echo "ERRO: Falha ao definir permissões de execução para o script install.sh."; exit 1; }
+chmod +x install.sh ulx_integrated_setup.sh ulx_universal_bridge.sh || { echo "\033[0;31m[ERRO]\033[0m Falha ao definir permissões de execução para os scripts. Verifique se você está no diretório correto do ULX."; exit 1; }
 
 # Executar o script de instalação principal
-sudo ./install.sh install || { echo "ERRO: A instalação do ULX falhou. Verifique as mensagens acima para detalhes."; exit 1; }
+sudo ./install.sh install
 
 echo "\n========================================================="
 echo "ULX UNIVERSAL INSTALADO COM SUCESSO! REINICIE O SISTEMA." 
 echo "========================================================="
 
-# --- FIM DO BLOCO DE INSTALAÇÃO ULX UNIVERSAL ---
+# --- FIM DO BLOOCO DE INSTALAÇÃO ULX UNIVERSAL ---
 ```
 
 ---
@@ -51,14 +48,11 @@ Após estar no diretório **ULX**, copie e cole **TODO** o bloco abaixo no seu t
 ```bash
 # --- INÍCIO DO BLOCO DE DESINSTALAÇÃO ULX UNIVERSAL ---
 
-# Sair imediatamente se um comando falhar
-set -e
-
 # Dar permissão de execução ao script de desinstalação
-chmod +x install.sh || { echo "ERRO: Falha ao definir permissões de execução para o script install.sh."; exit 1; }
+chmod +x install.sh || { echo "\033[0;31m[ERRO]\033[0m Falha ao definir permissões de execução para o script install.sh. Verifique se você está no diretório correto do ULX."; exit 1; }
 
 # Executar o script de desinstalação principal
-sudo ./install.sh uninstall || { echo "ERRO: A desinstalação do ULX falhou. Verifique as mensagens acima para detalhes."; exit 1; }
+sudo ./install.sh uninstall
 
 echo "\n========================================================="
 echo "ULX REMOVIDO COMPLETAMENTE! REINICIE O SISTEMA." 
