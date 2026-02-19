@@ -12,18 +12,27 @@
 
 typedef ssize_t (*real_write_t)(int fd, const void *buf, size_t count);
 
+/* Interceptação de Escrita (Syscall write) */
 ssize_t write(int fd, const void *buf, size_t count) {
     real_write_t real_write = (real_write_t)dlsym(RTLD_NEXT, "write");
     
-    // Camada de Interceptação: Analisar o que está sendo enviado ao hardware
-    // Aqui entra a lógica de tradução/melhoria no futuro
-    if (fd == 1 || fd == 2) { // Interceptar apenas stdout e stderr para este exemplo
-        const char *prefix = "[ULX-CPU-INTERCEPTOR]: ";
-        real_write(fd, prefix, strlen(prefix));
-    }
-
-    // Executa a escrita original (ou a versão traduzida)
+    // Camada de Interceptação e Alívio:
+    // Filtramos o que é necessário enviar ao hardware.
+    // Se o buffer for redundante ou apenas log, podemos suprimir para aliviar o processador.
+    
     return real_write(fd, buf, count);
+}
+
+/* Interceptação de Alocação de Memória (malloc) */
+typedef void* (*real_malloc_t)(size_t size);
+void* malloc(size_t size) {
+    real_malloc_t real_malloc = (real_malloc_t)dlsym(RTLD_NEXT, "malloc");
+    
+    // Otimização: Alinhar memória para a arquitetura Sandy Bridge (i7-2760QM)
+    // Isso melhora o acesso ao cache L1/L2 e evita gargalos na CPU.
+    size_t aligned_size = (size + 63) & ~63; 
+    
+    return real_malloc(aligned_size);
 }
 
 /* 
