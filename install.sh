@@ -71,10 +71,15 @@ install_dependencies() {
     log_info "Instalando dependências essenciais via pacman..."
 
     # Resolver conflito entre wine e wine-staging
-    if pacman -Q wine &> /dev/null; then
+    # Verifica se 'wine' (versão padrão) está instalado E se wine-staging NÃO está
+    if pacman -Qq wine &> /dev/null && ! pacman -Qq wine-staging &> /dev/null; then
         log_warn "Conflito detectado: 'wine' instalado. Removendo para instalar 'wine-staging'..."
         pacman -Rns --noconfirm wine \
             || { log_error "Falha ao remover 'wine'."; return 1; }
+    elif pacman -Qq wine-staging &> /dev/null; then
+        log_info "'wine-staging' já está instalado. Nenhuma ação necessária."
+    else
+        log_info "Nenhuma versão de wine instalada. Prosseguindo com a instalação de 'wine-staging'."
     fi
 
     pacman -Syu --needed --noconfirm \
