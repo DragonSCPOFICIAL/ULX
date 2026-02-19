@@ -50,9 +50,15 @@ namespace ULX {
         }
 
         void deallocate(void* ptr) {
+            if (!ptr) return;
+            
+            // Usar o free real do sistema para evitar recursão infinita
+            typedef void (*real_free_t)(void*);
+            static real_free_t real_free = (real_free_t)dlsym(RTLD_NEXT, "free");
+            
             std::lock_guard<std::mutex> lock(mtx);
-            // Lógica de liberação real (simplificada para o exemplo)
-            free(ptr);
+            // Lógica de liberação real
+            real_free(ptr);
         }
     };
 
@@ -65,6 +71,7 @@ namespace ULX {
     class JITInterceptor {
     public:
         static void InterceptAndOptimize(void* code_ptr, size_t size) {
+            (void)size; // Evitar aviso de parâmetro não utilizado
             // No futuro: Implementar análise de binário via Capstone/Zydis
             // Identificar loops SSE e traduzir para AVX (VEX prefix)
             
@@ -97,7 +104,7 @@ extern "C" {
      */
     typedef int (*real_execve_t)(const char *filename, char *const argv[], char *const envp[]);
     int execve(const char *filename, char *const argv[], char *const envp[]) {
-        auto real_execve = (real_execve_t)dlsym(RTLD_NEXT, "execve");
+        static real_execve_t real_execve = (real_execve_t)dlsym(RTLD_NEXT, "execve");
         
         // Adicionar ULX_ENABLED=1 ao ambiente do processo filho
         // Isso garante que a camada de tradução persista em sub-processos (jogos, launchers)

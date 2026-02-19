@@ -5,11 +5,20 @@
 #include <map>
 #include <mutex>
 #include <dlfcn.h>
+#include <string>
 
 /**
  * ULX-Vulkan: Camada de Interceptação e Otimização de GPU
  * Implementada como uma Vulkan Implicit Layer profissional.
  */
+
+#ifndef VK_LAYER_EXPORT
+#if defined(_WIN32)
+#define VK_LAYER_EXPORT __declspec(dllexport)
+#else
+#define VK_LAYER_EXPORT __attribute__((visibility("default")))
+#endif
+#endif
 
 namespace ULX_GPU {
 
@@ -48,7 +57,8 @@ extern "C" {
      * Esta função é o coração da camada, onde redirecionamos as chamadas da API.
      */
     VKAPI_ATTR PFN_vkVoidFunction VKAPI_CALL ULX_vkGetDeviceProcAddr(VkDevice device, const char* pName) {
-        if (std::string(pName) == "vkQueueSubmit") {
+        (void)device; // Evitar aviso de parâmetro não utilizado
+        if (pName && std::string(pName) == "vkQueueSubmit") {
             return (PFN_vkVoidFunction)ULX_GPU::CommandInterceptor::InterceptQueueSubmit;
         }
         

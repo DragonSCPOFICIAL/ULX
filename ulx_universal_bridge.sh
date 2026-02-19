@@ -6,10 +6,10 @@
 # NÃO USAR set -e: Tratamento de erros personalizado para feedback ao usuário
 
 # Cores para mensagens no terminal
-RED=\033[0;31m
-GREEN=\033[0;32m
-YELLOW=\033[1;33m
-NC=\033[0m
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+YELLOW='\033[1;33m'
+NC='\033[0m'
 
 # Variável para armazenar o último comando executado
 LAST_COMMAND=""
