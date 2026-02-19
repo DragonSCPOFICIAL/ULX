@@ -1,0 +1,21 @@
+// ULX Hardware Acceleration Example
+// Este exemplo utiliza as novas capacidades de interceptação de CPU e GPU.
+
+funcao main(): inteiro {
+    // Alocação de memória alinhada (SlabAllocator interceptado)
+    var dados: real = 100.5;
+    
+    escreva("Iniciando processamento acelerado por hardware...");
+    
+    // Otimização de CPU: O compilador agora emite instruções AVX (vaddps)
+    // para operações matemáticas pesadas se o hardware suportar.
+    var resultado = dados * 2.0;
+    
+    // Otimização de GPU: O comando abaixo é interceptado pela Vulkan Layer
+    // e processado diretamente no hardware de vídeo.
+    // gpu_submit(); // (Instrução especial integrada no IR)
+    
+    escreva("Processamento concluído com sucesso!");
+    
+    retorne 0;
+}

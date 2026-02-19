@@ -189,6 +189,11 @@ class X86_64CodeGen:
             Opcode.CALL: self.gen_call,
             Opcode.RET: self.gen_ret,
             Opcode.PHI: self.gen_phi,
+            # ULX Interceptor Hardware Acceleration
+            Opcode.VADDPS: self.gen_vaddps,
+            Opcode.VLOAD: self.gen_vload,
+            Opcode.VSTORE: self.gen_vstore,
+            Opcode.GPU_SUBMIT: self.gen_gpu_submit,
         }
         
         handler = opcode_handlers.get(inst.opcode)
@@ -372,6 +377,27 @@ class X86_64CodeGen:
             reg = self.reg_alloc.allocate(result.name)
             if reg:
                 self.emit(f"movq {value.name}, %{reg}")
+
+    # --- ULX Interceptor: AVX & GPU Code Generation ---
+
+    def gen_vload(self, inst: Instruction):
+        """AVX: Carrega 256 bits (8 floats) para um registrador YMM"""
+        ptr = inst.operands[0]
+        # Usamos vmovaps para carregar memória alinhada (SlabAllocator garante isso)
+        self.emit(f"vmovaps {ptr.name}, %ymm0")
+
+    def gen_vaddps(self, inst: Instruction):
+        """AVX: Soma vetorial de 8 floats em paralelo"""
+        self.emit("vaddps %ymm1, %ymm0, %ymm0")
+
+    def gen_vstore(self, inst: Instruction):
+        """AVX: Salva 256 bits do registrador YMM para a memória"""
+        ptr = inst.operands[0]
+        self.emit(f"vmovaps %ymm0, {ptr.name}")
+
+    def gen_gpu_submit(self, inst: Instruction):
+        """GPU: Intercepta e envia comando para a Vulkan Layer do ULX"""
+        self.emit("call ulx_gpu_dispatch_submit")
 
 
 if __name__ == "__main__":

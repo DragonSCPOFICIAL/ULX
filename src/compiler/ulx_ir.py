@@ -115,8 +115,7 @@ class Opcode(Enum):
     RET = "ret"
     CALL = "call"
     PHI = "phi"    # SSA phi node
-    
-    # Conversions
+        # Conversions
     TRUNC = "trunc"
     ZEXT = "zext"  # Zero extend
     SEXT = "sext"  # Sign extend
@@ -130,6 +129,20 @@ class Opcode(Enum):
     INTTOPTR = "inttoptr"
     BITCAST = "bitcast"
 
+    # --- ULX Interceptor & Hardware Acceleration ---
+    # AVX Vector Instructions
+    VADDPS = "vaddps"  # AVX Vector Add Packed Single-Precision
+    VSUBPS = "vsubps"  # AVX Vector Sub Packed Single-Precision
+    VMULPS = "vmulps"  # AVX Vector Mul Packed Single-Precision
+    VDIVPS = "vdivps"  # AVX Vector Div Packed Single-Precision
+    VLOAD = "vload"    # AVX Vector Load (256-bit)
+    VSTORE = "vstore"  # AVX Vector Store (256-bit)
+
+    # GPU / Vulkan Integration
+    GPU_SUBMIT = "gpu_submit"  # Submit Command Buffer to GPU
+    GPU_MALLOC = "gpu_malloc"  # Allocate Unified Memory (CPU/GPU)
+    GPU_FREE = "gpu_free"      # Free Unified Memory
+}
 
 class ICmpPredicate(Enum):
     """Predicados de comparação inteira"""
