@@ -43,6 +43,11 @@ install_yay_if_missing() {
 # Instalação automatizada de dependências
 install_dependencies() {
     log_info "Instalando dependências essenciais via pacman..."
+    # Resolver conflito entre wine e wine-staging
+    if sudo pacman -Q wine &> /dev/null; then
+        log_warn "Conflito detectado: 'wine' está instalado. Removendo 'wine' para instalar 'wine-staging'..."
+        sudo pacman -Rns --noconfirm wine || { log_error "Falha ao remover 'wine' para resolver conflito."; return 1; }
+    fi
     sudo pacman -Syu --needed --noconfirm cmake gcc vulkan-devel mesa lib32-mesa nasm python wine-staging git base-devel ncurses || { log_error "Falha ao instalar dependências do pacman."; return 1; }
     
     install_yay_if_missing || return 1
