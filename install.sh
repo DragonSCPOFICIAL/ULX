@@ -24,7 +24,7 @@ error_handler() {
 }
 
 # Configurar trap para capturar erros
-trap \'LAST_COMMAND=$BASH_COMMAND; error_handler\' ERR
+trap 'LAST_COMMAND=$BASH_COMMAND; error_handler' ERR
 
 # Funções de log
 log_info() {
@@ -52,9 +52,9 @@ install_yay_if_missing() {
             log_error "Falha crítica: Não foi possível instalar yay. Por favor, instale yay manualmente e tente novamente."
             exit 1 # Saída fatal se yay não puder ser instalado
         fi
-        log_info "\'yay\' instalado com sucesso."
+        log_info "'yay' instalado com sucesso."
     else
-        log_info "AUR helper \'yay\' já está instalado."
+        log_info "AUR helper 'yay' já está instalado."
     fi
     AUR_HELPER="yay"
 }
@@ -137,7 +137,7 @@ uninstall_ulx() {
     if [ -n "${AUR_HELPER}" ]; then
         ${AUR_HELPER} -R --noconfirm box64-git anbox-git || log_warn "Falha ao remover pacotes do AUR (${AUR_HELPER}). Pode ser que já não estejam instalados."
     else
-        log_warn "Nenhum AUR helper encontrado. Remova \'box64-git\' e \'anbox-git\' manualmente se os instalou via AUR."
+        log_warn "Nenhum AUR helper encontrado. Remova 'box64-git' e 'anbox-git' manualmente se os instalou via AUR."
     fi
     
     log_info "ULX REMOVIDO COMPLETAMENTE!"
