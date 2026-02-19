@@ -8,27 +8,52 @@ O **ULX** é uma plataforma de desenvolvimento de performance extrema para **Arc
 
 ## 🚀 Instalação Completa (Copia e Cola - Tudo Automático)
 
-**PRÉ-REQUISITO:** Certifique-se de ter clonado o repositório ULX e navegado para o seu diretório.
-Exemplo:
-```bash
-git clone https://github.com/DragonSCPOFICIAL/ULX.git
-cd ULX
-```
-
-Após estar no diretório **ULX**, copie e cole **TODO** o bloco abaixo no seu terminal. Ele instalará todas as dependências (incluindo AUR helpers como `yay` se necessário), compilará o ULX e o Interceptor de Hardware, e configurará o sistema para executar `.exe` e `.apk` nativamente, sem nenhuma intervenção manual. **Reinicie o sistema após a instalação para que todas as alterações tenham efeito.**
+Copie e cole **TODO** o bloco abaixo no seu terminal. Ele fará uma instalação limpa do ULX, incluindo a clonagem do repositório, instalação de todas as dependências (pacman e AUR), compilação do ULX e do Interceptor de Hardware, e configurará o sistema para executar `.exe` e `.apk` nativamente, sem nenhuma intervenção manual. **Reinicie o sistema após a instalação para que todas as alterações tenham efeito.**
 
 ```bash
 # --- INÍCIO DO BLOCO DE INSTALAÇÃO ULX UNIVERSAL ---
 
-# Dar permissão de execução ao script principal
-chmod +x install.sh ulx_integrated_setup.sh ulx_universal_bridge.sh || { echo "\033[0;31m[ERRO]\033[0m Falha ao definir permissões de execução para os scripts. Verifique se você está no diretório correto do ULX."; exit 1; }
+# Sair imediatamente se um comando falhar, mas com tratamento de erro
+set -e
 
-# Executar o script de instalação principal
+# Definir diretório de instalação
+INSTALL_DIR="${HOME}/ULX"
+REPO_URL="https://github.com/DragonSCPOFICIAL/ULX.git"
+
+# Função de tratamento de erro para o bloco
+install_error_handler() {
+    local last_exit_code=$?
+    echo -e "\n\033[0;31m[ERRO CRÍTICO]\033[0m A instalação do ULX falhou na etapa anterior. Código de saída: ${last_exit_code}"
+    echo -e "\033[0;31m[ERRO CRÍTICO]\033[0m Por favor, revise as mensagens acima para detalhes e tente novamente.\033[0m"
+    exit 1
+}
+trap install_error_handler ERR
+
+echo -e "\033[0;32m[INFO]\033[0m Iniciando instalação ULX Universal..."
+
+# 1. Remover instalação anterior (se existir) e clonar o repositório
+if [ -d "${INSTALL_DIR}" ]; then
+    echo -e "\033[0;33m[AVISO]\033[0m Diretório ULX existente detectado. Removendo para uma instalação limpa..."
+    sudo rm -rf "${INSTALL_DIR}"
+fi
+
+echo -e "\033[0;32m[INFO]\033[0m Clonando repositório ULX..."
+git clone "${REPO_URL}" "${INSTALL_DIR}"
+
+# 2. Navegar para o diretório do repositório
+cd "${INSTALL_DIR}"
+
+# 3. Dar permissão de execução aos scripts
+echo -e "\033[0;32m[INFO]\033[0m Definindo permissões de execução para scripts..."
+chmod +x install.sh ulx_integrated_setup.sh ulx_universal_bridge.sh
+
+# 4. Executar o script de instalação principal
+echo -e "\033[0;32m[INFO]\033[0m Executando script de instalação principal..."
 sudo ./install.sh install
 
-echo "\n========================================================="
-echo "ULX UNIVERSAL INSTALADO COM SUCESSO! REINICIE O SISTEMA." 
-echo "========================================================="
+echo -e "\n========================================================="
+echo -e "\033[0;32mULX UNIVERSAL INSTALADO COM SUCESSO! REINICIE O SISTEMA.\033[0m" 
+echo -e "========================================================="
 
 # --- FIM DO BLOCO DE INSTALAÇÃO ULX UNIVERSAL ---
 ```
@@ -37,26 +62,53 @@ echo "========================================================="
 
 ## 🗑️ Desinstalação Completa (Copia e Cola - Tudo Automático)
 
-**PRÉ-REQUISITO:** Certifique-se de estar no diretório raiz do repositório ULX.
-Exemplo:
-```bash
-cd ULX
-```
-
-Após estar no diretório **ULX**, copie e cole **TODO** o bloco abaixo no seu terminal para remover completamente o ULX, a Ponte Universal e todos os arquivos relacionados do seu sistema, revertendo todas as configurações. **Reinicie o sistema após a desinstalação.**
+Copie e cole **TODO** o bloco abaixo no seu terminal para remover completamente o ULX, a Ponte Universal e todos os arquivos relacionados do seu sistema, incluindo a pasta do repositório. **Reinicie o sistema após a desinstalação.**
 
 ```bash
 # --- INÍCIO DO BLOCO DE DESINSTALAÇÃO ULX UNIVERSAL ---
 
-# Dar permissão de execução ao script de desinstalação
-chmod +x install.sh || { echo "\033[0;31m[ERRO]\033[0m Falha ao definir permissões de execução para o script install.sh. Verifique se você está no diretório correto do ULX."; exit 1; }
+# Sair imediatamente se um comando falhar, mas com tratamento de erro
+set -e
 
-# Executar o script de desinstalação principal
-sudo ./install.sh uninstall
+# Definir diretório de instalação
+INSTALL_DIR="${HOME}/ULX"
 
-echo "\n========================================================="
-echo "ULX REMOVIDO COMPLETAMENTE! REINICIE O SISTEMA." 
-echo "========================================================="
+# Função de tratamento de erro para o bloco
+uninstall_error_handler() {
+    local last_exit_code=$?
+    echo -e "\n\033[0;31m[ERRO CRÍTICO]\033[0m A desinstalação do ULX falhou na etapa anterior. Código de saída: ${last_exit_code}"
+    echo -e "\033[0;31m[ERRO CRÍTICO]\033[0m Por favor, revise as mensagens acima para detalhes e tente novamente.\033[0m"
+    exit 1
+}
+trap uninstall_error_handler ERR
+
+echo -e "\033[0;32m[INFO]\033[0m Iniciando desinstalação ULX Universal..."
+
+# 1. Navegar para o diretório do repositório (se existir)
+if [ -d "${INSTALL_DIR}" ]; then
+    cd "${INSTALL_DIR}"
+    # 2. Executar o script de desinstalação principal
+    echo -e "\033[0;32m[INFO]\033[0m Executando script de desinstalação principal..."
+    sudo ./install.sh uninstall
+    # 3. Remover o diretório do repositório
+    echo -e "\033[0;32m[INFO]\033[0m Removendo diretório do repositório ULX..."
+    cd "${HOME}"
+    sudo rm -rf "${INSTALL_DIR}"
+else
+    echo -e "\033[0;33m[AVISO]\033[0m Diretório ULX não encontrado em ${INSTALL_DIR}. Pulando remoção de arquivos locais."
+    # Ainda tentar limpar binfmt e mime types caso o diretório tenha sido removido manualmente
+    echo -e "\033[0;32m[INFO]\033[0m Tentando limpar configurações residuais do sistema..."
+    sudo rm -f /etc/binfmt.d/ulx-exe.conf /etc/binfmt.d/ulx-apk.conf
+    [ -f /proc/sys/fs/binfmt_misc/ulx-exe ] && echo -1 | sudo tee /proc/sys/fs/binfmt_misc/ulx-exe > /dev/null
+    [ -f /proc/sys/fs/binfmt_misc/ulx-apk ] && echo -1 | sudo tee /proc/sys/fs/binfmt_misc/ulx-apk > /dev/null
+    sudo systemctl restart systemd-binfmt || echo -e "\033[0;33m[AVISO]\033[0m Falha ao reiniciar systemd-binfmt. Pode ser necessário reiniciar manualmente."
+    sudo rm -f /usr/share/mime/packages/ulx-exe.xml /usr/share/mime/packages/ulx-apk.xml
+    sudo update-mime-database /usr/share/mime || echo -e "\033[0;33m[AVISO]\033[0m Falha ao atualizar banco de dados MIME. Pode ser necessário reiniciar manualmente."
+fi
+
+echo -e "\n========================================================="
+echo -e "\033[0;32mULX REMOVIDO COMPLETAMENTE! REINICIE O SISTEMA.\033[0m" 
+echo -e "========================================================="
 
 # --- FIM DO BLOCO DE DESINSTALAÇÃO ULX UNIVERSAL ---
 ```
