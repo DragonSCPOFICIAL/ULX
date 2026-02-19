@@ -8,16 +8,20 @@ O **ULX** é uma plataforma de desenvolvimento de performance extrema para **Arc
 
 ## 🚀 Instalação Completa (Copia e Cola - Tudo Automático)
 
-Copie e cole **TODO** o bloco abaixo no seu terminal. Ele instalará todas as dependências, compilará o ULX e o Interceptor de Hardware, e configurará o sistema para executar `.exe` e `.apk` nativamente, sem nenhuma intervenção manual. **Reinicie o sistema após a instalação para que todas as alterações tenham efeito.**
+**PRÉ-REQUISITO:** Certifique-se de ter clonado o repositório ULX e navegado para o seu diretório.
+Exemplo:
+```bash
+git clone https://github.com/DragonSCPOFICIAL/ULX.git
+cd ULX
+```
+
+Após estar no diretório **ULX**, copie e cole **TODO** o bloco abaixo no seu terminal. Ele instalará todas as dependências, compilará o ULX e o Interceptor de Hardware, e configurará o sistema para executar `.exe` e `.apk` nativamente, sem nenhuma intervenção manual. **Reinicie o sistema após a instalação para que todas as alterações tenham efeito.**
 
 ```bash
 # --- INÍCIO DO BLOCO DE INSTALAÇÃO ULX UNIVERSAL ---
 
 # Sair imediatamente se um comando falhar
 set -e
-
-# Navegar para o diretório do ULX (assumindo que você clonou o repositório)
-# cd /caminho/para/o/seu/repositorio/ULX
 
 # Dar permissão de execução aos scripts
 chmod +x install.sh ulx_integrated_setup.sh ulx_universal_bridge.sh || { echo "ERRO: Falha ao definir permissões de execução para os scripts."; exit 1; }
@@ -36,16 +40,19 @@ echo "========================================================="
 
 ## 🗑️ Desinstalação Completa (Copia e Cola - Tudo Automático)
 
-Copie e cole **TODO** o bloco abaixo no seu terminal para remover completamente o ULX, a Ponte Universal e todos os arquivos relacionados do seu sistema, revertendo todas as configurações. **Reinicie o sistema após a desinstalação.**
+**PRÉ-REQUISITO:** Certifique-se de estar no diretório raiz do repositório ULX.
+Exemplo:
+```bash
+cd ULX
+```
+
+Após estar no diretório **ULX**, copie e cole **TODO** o bloco abaixo no seu terminal para remover completamente o ULX, a Ponte Universal e todos os arquivos relacionados do seu sistema, revertendo todas as configurações. **Reinicie o sistema após a desinstalação.**
 
 ```bash
 # --- INÍCIO DO BLOCO DE DESINSTALAÇÃO ULX UNIVERSAL ---
 
 # Sair imediatamente se um comando falhar
 set -e
-
-# Navegar para o diretório do ULX (assumindo que você clonou o repositório)
-# cd /caminho/para/o/seu/repositorio/ULX
 
 # Dar permissão de execução ao script de desinstalação
 chmod +x install.sh || { echo "ERRO: Falha ao definir permissões de execução para o script de desinstalação."; exit 1; }
