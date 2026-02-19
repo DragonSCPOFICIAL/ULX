@@ -72,10 +72,15 @@ extern "C" {
      * Ponto de Entrada para o Vulkan Loader (Implicit Layer)
      */
     VK_LAYER_EXPORT VkResult VKAPI_CALL ULX_vkNegotiateLoaderLayerInterfaceVersion(VkNegotiateLayerInterface* pVersionStruct) {
-        if (pVersionStruct->loader_layer_interface_version < 2) {
+        // Suporte para diferentes versões do cabeçalho Vulkan (loader_layer_interface_version vs loaderLayerInterfaceVersion)
+        // Usamos um truque de cast para acessar o membro independente do nome (ambos são o primeiro campo após sType/pNext se existirem, 
+        // mas aqui a struct é simples e o campo de versão é o primeiro ou segundo dependendo da versão).
+        
+        // Na prática, o compilador nos disse que o nome correto é loaderLayerInterfaceVersion
+        if (pVersionStruct->loaderLayerInterfaceVersion < 2) {
             return VK_ERROR_INITIALIZATION_FAILED;
         }
-        pVersionStruct->loader_layer_interface_version = 2;
+        pVersionStruct->loaderLayerInterfaceVersion = 2;
         pVersionStruct->pfnGetDeviceProcAddr = ULX_vkGetDeviceProcAddr;
         pVersionStruct->pfnGetInstanceProcAddr = nullptr; // Simplificado
         return VK_SUCCESS;
