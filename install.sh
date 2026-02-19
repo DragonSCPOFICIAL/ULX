@@ -67,13 +67,20 @@ install_ulx() {
     sudo cp -r src "$PREFIX/lib/ulx/"
     sudo cp -r core "$PREFIX/lib/ulx/"
     
-    # Instalar exemplos
+ # 3. Instalar exemplos
     log_info "Instalando exemplos..."
     sudo cp -r examples/* "$PREFIX/share/ulx/examples/"
     
     # Instalar documentação
     log_info "Instalando documentação..."
     sudo cp README.md "$PREFIX/share/ulx/"
+
+    # 4. Configurar Ponte Universal (.EXE & .APK)
+    log_info "Configurando suporte nativo para .EXE e .APK..."
+    if [ -f "./ulx_universal_bridge.sh" ]; then
+        chmod +x ./ulx_universal_bridge.sh
+        sudo ./ulx_universal_bridge.sh
+    fi
     
     log_info "ULX instalado com sucesso!"
     log_info "Use 'ulxc --help' para ver as opções"
