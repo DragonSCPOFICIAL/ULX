@@ -43,7 +43,7 @@ install_yay_if_missing() {
 # Instalação automatizada de dependências
 install_dependencies() {
     log_info "Instalando dependências essenciais via pacman..."
-    sudo pacman -Syu --needed --noconfirm cmake gcc vulkan-devel mesa lib32-mesa nasm python wine-staging git base-devel tput || { log_error "Falha ao instalar dependências do pacman."; return 1; }
+    sudo pacman -Syu --needed --noconfirm cmake gcc vulkan-devel mesa lib32-mesa nasm python wine-staging git base-devel ncurses || { log_error "Falha ao instalar dependências do pacman."; return 1; }
     
     install_yay_if_missing || return 1
 
