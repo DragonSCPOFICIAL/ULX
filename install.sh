@@ -28,15 +28,33 @@ run_as_user() {
     sudo -u "$real_user" "$@"
 }
 
+# ─── Verificar se yay está acessível pelo usuário real ──────────────────────
+yay_is_installed() {
+    # Procura yay nos locais mais comuns — evita depender do PATH via sudo
+    local real_user
+    real_user=$(get_real_user)
+    local home_dir
+    home_dir=$(eval echo "~$real_user")
+
+    # Locais típicos onde o yay pode estar instalado
+    for bin in /usr/bin/yay /usr/local/bin/yay "$home_dir/.local/bin/yay" "$home_dir/go/bin/yay"; do
+        [ -x "$bin" ] && return 0
+    done
+
+    # Fallback: tenta via which como o usuário real
+    sudo -u "$real_user" bash -c 'which yay' &> /dev/null && return 0
+
+    return 1
+}
+
 # ─── Instalar yay se não encontrado ─────────────────────────────────────────
 install_yay_if_missing() {
     log_info "Verificando e instalando AUR helper (yay) se necessário..."
 
-    # Verifica tanto para root quanto para o usuário real
     local real_user
     real_user=$(get_real_user)
 
-    if sudo -u "$real_user" command -v yay &> /dev/null; then
+    if yay_is_installed; then
         log_info "AUR helper 'yay' já está instalado."
         AUR_HELPER="yay"
         return 0
@@ -57,7 +75,8 @@ install_yay_if_missing() {
 
     rm -rf "$build_dir"
 
-    if ! sudo -u "$real_user" command -v yay &> /dev/null; then
+    # Verifica instalação com a função robusta
+    if ! yay_is_installed; then
         log_error "Falha crítica: Não foi possível instalar yay. Instale manualmente e tente novamente."
         return 1
     fi
@@ -156,14 +175,11 @@ uninstall_ulx() {
     make clean
 
     log_info "Removendo pacotes do AUR..."
-    local real_user
-    real_user=$(get_real_user)
-
-    if sudo -u "$real_user" command -v yay &> /dev/null; then
+    if yay_is_installed; then
         # yay também não pode rodar como root
         run_as_user yay -Rns --noconfirm box64-git \
             || log_warn "Falha ao remover pacotes do AUR. Talvez já não estejam instalados."
-    elif sudo -u "$real_user" command -v paru &> /dev/null; then
+    elif [ -x /usr/bin/paru ] || [ -x /usr/local/bin/paru ]; then
         run_as_user paru -Rns --noconfirm box64-git \
             || log_warn "Falha ao remover pacotes do AUR."
     else
