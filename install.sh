@@ -8,7 +8,7 @@ set -e
 RED=\'\\033[0;31m\'
 GREEN=\'\\033[0;32m\'
 YELLOW=\'\\033[1;33m\'
-NC=\'\\033[0m\' # No Color
+NC=\'\\033[0m\'
 
 # Funções de log
 log_info() {
@@ -24,28 +24,22 @@ log_error() {
     exit 1 # Sair em caso de erro crítico
 }
 
-# Função para verificar e instalar AUR helper
-install_aur_helper() {
-    log_info "Verificando e instalando AUR helper (yay ou paru)..."
-    if command -v yay &> /dev/null; then
-        AUR_HELPER="yay"
-        log_info "AUR helper 'yay' encontrado."
-    elif command -v paru &> /dev/null; then
-        AUR_HELPER="paru"
-        log_info "AUR helper 'paru' encontrado."
-    else
-        log_warn "Nenhum AUR helper (yay ou paru) encontrado. Tentando instalar yay..."
+# Função para instalar yay se não encontrado
+install_yay_if_missing() {
+    if ! command -v yay &> /dev/null; then
+        log_warn "AUR helper (yay) não encontrado. Tentando instalar yay..."
         sudo pacman -S --needed --noconfirm git base-devel || log_error "Falha ao instalar dependências para AUR helper."
         git clone https://aur.archlinux.org/yay.git /tmp/yay_install || log_error "Falha ao clonar repositório yay."
         (cd /tmp/yay_install && makepkg -si --noconfirm) || log_error "Falha ao compilar e instalar yay."
         rm -rf /tmp/yay_install
-        if command -v yay &> /dev/null; then
-            AUR_HELPER="yay"
-            log_info "'yay' instalado com sucesso."
-        else
-            log_error "Falha crítica: Não foi possível instalar um AUR helper. Por favor, instale 'yay' ou 'paru' manualmente e tente novamente."
+        if ! command -v yay &> /dev/null; then
+            log_error "Falha crítica: Não foi possível instalar yay. Por favor, instale yay manualmente e tente novamente."
         fi
+        log_info "'yay' instalado com sucesso."
+    else
+        log_info "AUR helper 'yay' já está instalado."
     fi
+    AUR_HELPER="yay"
 }
 
 # Instalação automatizada de dependências
@@ -53,7 +47,7 @@ install_dependencies() {
     log_info "Instalando dependências essenciais via pacman..."
     sudo pacman -Syu --needed --noconfirm cmake gcc vulkan-devel mesa lib32-mesa nasm python wine-staging git base-devel || log_error "Falha ao instalar dependências via pacman."
     
-    install_aur_helper # Garante que um AUR helper esteja disponível
+    install_yay_if_missing # Garante que yay esteja disponível
 
     log_info "Instalando pacotes do AUR (box64-git e anbox-git) via ${AUR_HELPER}..."
     ${AUR_HELPER} -S --noconfirm box64-git anbox-git || log_error "Falha ao instalar pacotes do AUR (${AUR_HELPER})."

@@ -15,7 +15,7 @@ git clone https://github.com/DragonSCPOFICIAL/ULX.git
 cd ULX
 ```
 
-Após estar no diretório **ULX**, copie e cole **TODO** o bloco abaixo no seu terminal. Ele instalará todas as dependências, compilará o ULX e o Interceptor de Hardware, e configurará o sistema para executar `.exe` e `.apk` nativamente, sem nenhuma intervenção manual. **Reinicie o sistema após a instalação para que todas as alterações tenham efeito.**
+Após estar no diretório **ULX**, copie e cole **TODO** o bloco abaixo no seu terminal. Ele instalará todas as dependências (incluindo AUR helpers como `yay` se necessário), compilará o ULX e o Interceptor de Hardware, e configurará o sistema para executar `.exe` e `.apk` nativamente, sem nenhuma intervenção manual. **Reinicie o sistema após a instalação para que todas as alterações tenham efeito.**
 
 ```bash
 # --- INÍCIO DO BLOCO DE INSTALAÇÃO ULX UNIVERSAL ---
@@ -23,8 +23,8 @@ Após estar no diretório **ULX**, copie e cole **TODO** o bloco abaixo no seu t
 # Sair imediatamente se um comando falhar
 set -e
 
-# Dar permissão de execução aos scripts
-chmod +x install.sh ulx_integrated_setup.sh ulx_universal_bridge.sh || { echo "ERRO: Falha ao definir permissões de execução para os scripts."; exit 1; }
+# Dar permissão de execução ao script principal
+chmod +x install.sh || { echo "ERRO: Falha ao definir permissões de execução para o script install.sh."; exit 1; }
 
 # Executar o script de instalação principal
 sudo ./install.sh install || { echo "ERRO: A instalação do ULX falhou. Verifique as mensagens acima para detalhes."; exit 1; }
@@ -55,7 +55,7 @@ Após estar no diretório **ULX**, copie e cole **TODO** o bloco abaixo no seu t
 set -e
 
 # Dar permissão de execução ao script de desinstalação
-chmod +x install.sh || { echo "ERRO: Falha ao definir permissões de execução para o script de desinstalação."; exit 1; }
+chmod +x install.sh || { echo "ERRO: Falha ao definir permissões de execução para o script install.sh."; exit 1; }
 
 # Executar o script de desinstalação principal
 sudo ./install.sh uninstall || { echo "ERRO: A desinstalação do ULX falhou. Verifique as mensagens acima para detalhes."; exit 1; }
