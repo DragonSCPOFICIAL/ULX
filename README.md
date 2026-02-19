@@ -30,7 +30,7 @@ echo "\n========================================================="
 echo "ULX UNIVERSAL INSTALADO COM SUCESSO! REINICIE O SISTEMA." 
 echo "========================================================="
 
-# --- FIM DO BLOOCO DE INSTALAÇÃO ULX UNIVERSAL ---
+# --- FIM DO BLOCO DE INSTALAÇÃO ULX UNIVERSAL ---
 ```
 
 ---
