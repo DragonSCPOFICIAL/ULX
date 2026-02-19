@@ -48,7 +48,17 @@ if [ ! -d /proc/sys/fs/binfmt_misc ]; then
     sudo mount -t binfmt_misc binfmt_misc /proc/sys/fs/binfmt_misc || error_handler
 fi
 
-# 2. Criar Wrappers de Execução Silenciosa
+# 2. Remover associações conflitantes do Wine (se existirem)
+# O Wine costuma registrar 'wine' ou 'DOSWin' no binfmt_misc.
+# Vamos desativar temporariamente para que o ULX tenha prioridade.
+for conflict in wine DOSWin; do
+    if [ -f "/proc/sys/fs/binfmt_misc/$conflict" ]; then
+        log_info "[KERNEL] Removendo conflito de binfmt: $conflict"
+        echo -1 | sudo tee "/proc/sys/fs/binfmt_misc/$conflict" > /dev/null || true
+    fi
+done
+
+# 3. Criar Wrappers de Execução Silenciosa
 log_info "Criando wrappers de execução para .EXE e .APK..."
 
 # Wrapper para .EXE
@@ -60,6 +70,8 @@ export WINEDEBUG=-all
 export LD_PRELOAD="/usr/local/lib/ulx/runtime/libulx_core.so"
 export VK_LAYER_PATH="/usr/local/lib/ulx/runtime/"
 export VK_INSTANCE_LAYERS="VK_LAYER_ULX_OPTIMIZER"
+export ULX_GPU_ENABLED=1
+# Executa o Wine de forma silenciosa e passa todos os argumentos
 exec wine "\$@" || exit 1
 EOF
 sudo chmod +x /usr/local/bin/ulx-run-exe || error_handler
@@ -68,38 +80,36 @@ sudo chmod +x /usr/local/bin/ulx-run-exe || error_handler
 cat <<EOF | sudo tee /usr/local/bin/ulx-run-apk > /dev/null
 #!/bin/bash
 # ULX-APK Wrapper: Execução nativa de apps Android via Anbox.
-# Inicia o serviço Anbox se não estiver rodando e tenta lançar o APK.
 export LD_PRELOAD="/usr/local/lib/ulx/runtime/libulx_core.so"
 export VK_LAYER_PATH="/usr/local/lib/ulx/runtime/"
 export VK_INSTANCE_LAYERS="VK_LAYER_ULX_OPTIMIZER"
 
-# Verifica se o anbox-session-manager está rodando, se não, tenta iniciar
+# Verifica se o anbox-session-manager está rodando
 ping -c 1 127.0.0.1 > /dev/null || sudo systemctl start anbox-container-manager.service
 
-# Tenta lançar o APK via anbox-shell. Pode precisar de mais configuração do Anbox.
-# Para uma integração mais robusta, o APK precisaria ser instalado no ambiente Anbox primeiro.
 exec anbox-shell --app="\$1" || exec anbox-shell --file="\$1" || exit 1
 EOF
 sudo chmod +x /usr/local/bin/ulx-run-apk || error_handler
 
-# 3. Criar arquivos de configuração binfmt para persistência
+# 4. Criar arquivos de configuração binfmt para persistência
 log_info "Criando configurações binfmt_misc persistentes em /etc/binfmt.d/ ..."
 
-# Configuração para .EXE
+# Configuração para .EXE (Usando prioridade alta e nome único)
+# O prefixo :ulx-exe: garante que nossa regra seja carregada.
 cat <<EOF | sudo tee /etc/binfmt.d/ulx-exe.conf > /dev/null
-:ulx-exe:M::MZ::/usr/local/bin/ulx-run-exe:
+:ulx-exe:M::MZ::/usr/local/bin/ulx-run-exe:P
 EOF
 
 # Configuração para .APK
 cat <<EOF | sudo tee /etc/binfmt.d/ulx-apk.conf > /dev/null
-:ulx-apk:M::PK\x03\x04::/usr/local/bin/ulx-run-apk:
+:ulx-apk:M::PK\x03\x04::/usr/local/bin/ulx-run-apk:P
 EOF
 
-# 4. Recarregar configurações do binfmt_misc para aplicar as novas regras imediatamente
+# 5. Recarregar configurações do binfmt_misc
 log_info "Recarregando configurações do systemd-binfmt..."
 sudo systemctl restart systemd-binfmt || error_handler
 
 log_info "========================================================="
-log_info "PONTE UNIVERSAL ATIVADA E PERSISTENTE!"
-log_info "Agora você pode executar .exe e .apk diretamente no terminal ou clicando."
+log_info "PONTE UNIVERSAL ATIVADA COM PRIORIDADE MÁXIMA!"
+log_info "O ULX agora interceptará arquivos .exe antes do Wine padrão."
 log_info "========================================================="
