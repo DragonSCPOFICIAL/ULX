@@ -6,139 +6,77 @@ O **ULX** é uma plataforma de desenvolvimento de performance extrema para **Arc
 
 ---
 
-## 🚀 Instalação Completa (Copia e Cola - Tudo Automático)
+## 🚀 Instalação Completa (Copia e Cola - UM ÚNICO BLOCO)
 
-Copie e cole **TODO** o bloco abaixo no seu terminal. Ele fará uma instalação limpa do ULX, incluindo a clonagem do repositório, instalação de todas as dependências (pacman e AUR), compilação do ULX e do Interceptor de Hardware, e configurará o sistema para executar `.exe` e `.apk` nativamente, sem nenhuma intervenção manual. **Reinicie o sistema após a instalação para que todas as alterações tenham efeito.**
+Este comando irá: **remover versões antigas**, clonar o repositório mais recente, instalar todas as dependências (incluindo o AUR helper `yay` se necessário), compilar o sistema e configurar a Ponte Universal (.exe/.apk). **Reinicie o sistema após a instalação.**
 
 ```bash
-# --- INÍCIO DO BLOCO DE INSTALAÇÃO ULX UNIVERSAL ---
-
-# Sair imediatamente se um comando falhar, mas com tratamento de erro
-set -e
-
-# Definir diretório de instalação
-INSTALL_DIR="${HOME}/ULX"
-REPO_URL="https://github.com/DragonSCPOFICIAL/ULX.git"
-
-# Função de tratamento de erro para o bloco
-install_error_handler() {
-    local last_exit_code=$?
-    echo -e "\n\033[0;31m[ERRO CRÍTICO]\033[0m A instalação do ULX falhou na etapa anterior. Código de saída: ${last_exit_code}"
-    echo -e "\033[0;31m[ERRO CRÍTICO]\033[0m Por favor, revise as mensagens acima para detalhes e tente novamente.\033[0m"
-    exit 1
-}
-trap install_error_handler ERR
-
-echo -e "\033[0;32m[INFO]\033[0m Iniciando instalação ULX Universal..."
-
-# 1. Remover instalação anterior (se existir) e clonar o repositório
-if [ -d "${INSTALL_DIR}" ]; then
-    echo -e "\033[0;33m[AVISO]\033[0m Diretório ULX existente detectado. Removendo para uma instalação limpa..."
-    sudo rm -rf "${INSTALL_DIR}"
-fi
-
-echo -e "\033[0;32m[INFO]\033[0m Clonando repositório ULX..."
-git clone "${REPO_URL}" "${INSTALL_DIR}"
-
-# 2. Navegar para o diretório do repositório
-cd "${INSTALL_DIR}"
-
-# 3. Dar permissão de execução aos scripts
-echo -e "\033[0;32m[INFO]\033[0m Definindo permissões de execução para scripts..."
-chmod +x install.sh ulx_integrated_setup.sh ulx_universal_bridge.sh
-
-# 4. Executar o script de instalação principal
-echo -e "\033[0;32m[INFO]\033[0m Executando script de instalação principal..."
-sudo ./install.sh install
-
-echo -e "\n========================================================="
-echo -e "\033[0;32mULX UNIVERSAL INSTALADO COM SUCESSO! REINICIE O SISTEMA.\033[0m" 
-echo -e "========================================================="
-
-# --- FIM DO BLOCO DE INSTALAÇÃO ULX UNIVERSAL ---
+# --- SUPER BLOCO DE INSTALAÇÃO ULX ---
+(
+  REPO_URL="https://github.com/DragonSCPOFICIAL/ULX.git"
+  INSTALL_DIR="${HOME}/ULX"
+  
+  echo -e "\033[0;32m[ULX]\033[0m Iniciando automação total no Arch Linux..."
+  
+  # Limpeza prévia para garantir atualização
+  if [ -d "$INSTALL_DIR" ]; then
+    echo -e "\033[0;33m[ULX]\033[0m Removendo versão antiga para atualização limpa..."
+    sudo rm -rf "$INSTALL_DIR"
+  fi
+  
+  # Clonagem e entrada no diretório
+  echo -e "\033[0;32m[ULX]\033[0m Clonando repositório oficial..."
+  git clone "$REPO_URL" "$INSTALL_DIR" || { echo -e "\033[0;31m[ERRO]\033[0m Falha ao clonar o repositório."; exit 1; }
+  cd "$INSTALL_DIR"
+  
+  # Permissões e Execução
+  chmod +x install.sh ulx_integrated_setup.sh ulx_universal_bridge.sh
+  
+  echo -e "\033[0;32m[ULX]\033[0m Executando instalador mestre (pode solicitar sua senha sudo)..."
+  if sudo ./install.sh install; then
+    echo -e "\n\033[0;32m=========================================================\033[0m"
+    echo -e "\033[0;32m   ULX INSTALADO COM SUCESSO! REINICIE O SEU ARCH LINUX. \033[0m"
+    echo -e "\033[0;32m=========================================================\033[0m"
+  else
+    echo -e "\n\033[0;31m[ERRO]\033[0m A instalação falhou. Verifique as mensagens acima."
+    echo -e "\033[0;31m[DICA]\033[0m O terminal permanecerá aberto para você analisar o erro.\033[0m"
+  fi
+)
+# --- FIM DO BLOCO ---
 ```
 
 ---
 
-## 🗑️ Desinstalação Completa (Copia e Cola - Tudo Automático)
+## 🗑️ Desinstalação Total (Copia e Cola - UM ÚNICO BLOCO)
 
-Copie e cole **TODO** o bloco abaixo no seu terminal para remover completamente o ULX, a Ponte Universal e todos os arquivos relacionados do seu sistema, incluindo a pasta do repositório. **Reinicie o sistema após a desinstalação.**
+Este comando irá: remover todas as configurações do sistema, desinstalar os drivers de tradução e **deletar permanentemente a pasta do repositório**.
 
 ```bash
-# --- INÍCIO DO BLOCO DE DESINSTALAÇÃO ULX UNIVERSAL ---
-
-# Sair imediatamente se um comando falhar, mas com tratamento de erro
-set -e
-
-# Definir diretório de instalação
-INSTALL_DIR="${HOME}/ULX"
-
-# Função de tratamento de erro para o bloco
-uninstall_error_handler() {
-    local last_exit_code=$?
-    echo -e "\n\033[0;31m[ERRO CRÍTICO]\033[0m A desinstalação do ULX falhou na etapa anterior. Código de saída: ${last_exit_code}"
-    echo -e "\033[0;31m[ERRO CRÍTICO]\033[0m Por favor, revise as mensagens acima para detalhes e tente novamente.\033[0m"
-    exit 1
-}
-trap uninstall_error_handler ERR
-
-echo -e "\033[0;32m[INFO]\033[0m Iniciando desinstalação ULX Universal..."
-
-# 1. Navegar para o diretório do repositório (se existir)
-if [ -d "${INSTALL_DIR}" ]; then
-    cd "${INSTALL_DIR}"
-    # 2. Executar o script de desinstalação principal
-    echo -e "\033[0;32m[INFO]\033[0m Executando script de desinstalação principal..."
+# --- SUPER BLOCO DE DESINSTALAÇÃO ULX ---
+(
+  INSTALL_DIR="${HOME}/ULX"
+  if [ -d "$INSTALL_DIR" ]; then
+    cd "$INSTALL_DIR"
+    echo -e "\033[0;33m[ULX]\033[0m Iniciando remoção completa do sistema..."
     sudo ./install.sh uninstall
-    # 3. Remover o diretório do repositório
-    echo -e "\033[0;32m[INFO]\033[0m Removendo diretório do repositório ULX..."
-    cd "${HOME}"
-    sudo rm -rf "${INSTALL_DIR}"
-else
-    echo -e "\033[0;33m[AVISO]\033[0m Diretório ULX não encontrado em ${INSTALL_DIR}. Pulando remoção de arquivos locais."
-    # Ainda tentar limpar binfmt e mime types caso o diretório tenha sido removido manualmente
-    echo -e "\033[0;32m[INFO]\033[0m Tentando limpar configurações residuais do sistema..."
-    sudo rm -f /etc/binfmt.d/ulx-exe.conf /etc/binfmt.d/ulx-apk.conf
-    [ -f /proc/sys/fs/binfmt_misc/ulx-exe ] && echo -1 | sudo tee /proc/sys/fs/binfmt_misc/ulx-exe > /dev/null
-    [ -f /proc/sys/fs/binfmt_misc/ulx-apk ] && echo -1 | sudo tee /proc/sys/fs/binfmt_misc/ulx-apk > /dev/null
-    sudo systemctl restart systemd-binfmt || echo -e "\033[0;33m[AVISO]\033[0m Falha ao reiniciar systemd-binfmt. Pode ser necessário reiniciar manualmente."
-    sudo rm -f /usr/share/mime/packages/ulx-exe.xml /usr/share/mime/packages/ulx-apk.xml
-    sudo update-mime-database /usr/share/mime || echo -e "\033[0;33m[AVISO]\033[0m Falha ao atualizar banco de dados MIME. Pode ser necessário reiniciar manualmente."
-fi
-
-echo -e "\n========================================================="
-echo -e "\033[0;32mULX REMOVIDO COMPLETAMENTE! REINICIE O SISTEMA.\033[0m" 
-echo -e "========================================================="
-
-# --- FIM DO BLOCO DE DESINSTALAÇÃO ULX UNIVERSAL ---
+    cd "$HOME"
+    sudo rm -rf "$INSTALL_DIR"
+    echo -e "\n\033[0;32m[SUCESSO]\033[0m ULX e todos os seus arquivos foram removidos.\033[0m"
+  else
+    echo -e "\033[0;31m[AVISO]\033[0m Pasta do ULX não encontrada em $INSTALL_DIR.\033[0m"
+  fi
+)
+# --- FIM DO BLOCO ---
 ```
 
 ---
 
-## 🛠️ Como Usar
+## 🛠️ Como Funciona o "Metal"
 
-Após a instalação e reinício do sistema:
+Após reiniciar, o seu Arch Linux se torna universal:
 
-1. **Compilar seu código ULX**:
-   ```bash
-   ulxc seu_programa.ulx -o meu_app
-   ```
+1. **Execução Direta**: Clique duplo ou `./jogo.exe` / `./app.apk` no terminal. O ULX intercepta a chamada e usa a camada de tradução de baixo nível (Box64/Wine/Anbox) sem abrir emuladores.
+2. **Performance**: O interceptador detecta seu **i7-2760QM** e força o uso de instruções **AVX** e **Vulkan**, aliviando a CPU e acelerando a GPU.
+3. **Linguagem ULX**: Use `ulxc` para compilar códigos que conversam direto com o hardware.
 
-2. **Executar Jogos/Apps Windows (.exe) ou Android (.apk)**:
-   *Basta dar permissão de execução e rodar diretamente. O sistema operacional já saberá como abri-los:*
-   ```bash
-   chmod +x meu_jogo.exe
-   ./meu_jogo.exe
-   ```
-   ou
-   ```bash
-   chmod +x meu_app.apk
-   ./meu_app.apk
-   ```
-
-3. **Executar com Performance de Metal (AVX/Vulkan)**:
-   ```bash
-   ulx-run ./meu_app
-   ```
-
-*Nota: O ULX utiliza syscalls diretas do Linux e otimizações de hardware nativas para garantir que seu código seja o mais rápido possível, independentemente do formato original.*
+*Desenvolvido para entusiastas de Arch Linux que buscam o máximo de controle e velocidade.*

@@ -6,10 +6,10 @@
 # NÃO USAR set -e: Tratamento de erros personalizado para feedback ao usuário
 
 # Cores
-RED=\033[0;31m
-GREEN=\033[0;32m
-YELLOW=\033[1;33m
-NC=\033[0m
+RED=\'\033[0;31m\'
+GREEN=\'\033[0;32m\'
+YELLOW=\'\033[1;33m\'
+NC=\'\033[0m\'
 
 # Variável para armazenar o último comando executado
 LAST_COMMAND=""
@@ -27,7 +27,7 @@ error_handler() {
 }
 
 # Configurar trap para capturar erros
-trap 'LAST_COMMAND=$BASH_COMMAND; error_handler' ERR
+trap \'LAST_COMMAND=$BASH_COMMAND; error_handler\' ERR
 
 # Funções de log
 log_info() {
@@ -43,7 +43,7 @@ log_info "   ULX - SISTEMA DE PERFORMANCE DE METAL (v2.1.0)"
 log_info "========================================================="
 
 # 1. Configurar o Compilador ULX para Performance
-log_info "[ULX] Configurando pipeline de compilação 'Metal'..."
+log_info "[ULX] Configurando pipeline de compilação \'Metal\'..."
 # Ativar otimizações de AVX e Syscalls diretas no compilador Python
 export ULX_OPTIMIZE_AVX=1
 export ULX_USE_DIRECT_SYSCALLS=1
@@ -63,8 +63,8 @@ sudo cp ulx-interceptor/build/libulx_core.so /usr/local/lib/ulx/runtime/ || erro
 sudo cp ulx-interceptor/build/libulx_vulkan.so /usr/local/lib/ulx/runtime/ || error_handler
 sudo cp ulx-interceptor/gpu/ulx_vulkan_layer.json /usr/local/lib/ulx/runtime/ || error_handler
 
-# 4. Criar o Wrapper de Execução 'ulx-run'
-log_info "[BIN] Criando utilitário 'ulx-run' para execução otimizada..."
+# 4. Criar o Wrapper de Execução \'ulx-run\'
+log_info "[BIN] Criando utilitário \'ulx-run\' para execução otimizada..."
 cat <<EOF | sudo tee /usr/local/bin/ulx-run > /dev/null
 #!/bin/bash
 # ULX-RUN: Executa binários ULX com interceptação e otimização total.
