@@ -2,43 +2,43 @@
 
 O **ULX** é uma plataforma de desenvolvimento de performance extrema para **Arch Linux**, que integra uma linguagem de programação nativa com um interceptador de hardware de baixo nível para extrair o máximo de desempenho da CPU (AVX) e GPU (Vulkan).
 
-**NOVIDADE: Agora com suporte nativo para arquivos .EXE e .APK sem emuladores visíveis.**
+**NOVIDADE: Agora com suporte nativo para arquivos .EXE e .APK sem emuladores visíveis, com instalação e configuração 100% automatizadas.**
 
 ---
 
-## 🚀 Instalação Completa (Copia e Cola)
+## 🚀 Instalação Completa (Copia e Cola - Tudo Automático)
 
-Copie e cole o bloco abaixo no seu terminal para instalar o compilador ULX, o Interceptor de Hardware, o suporte nativo para **.EXE** e **.APK** e configurar todo o ambiente automaticamente:
+Copie e cole **TODO** o bloco abaixo no seu terminal. Ele instalará todas as dependências, compilará o ULX e o Interceptor de Hardware, e configurará o sistema para executar `.exe` e `.apk` nativamente, sem nenhuma intervenção manual. **Reinicie o sistema após a instalação para que todas as alterações tenham efeito.**
 
 ```bash
 # Instalar dependências, compilar o ULX e ativar a Ponte Universal
-sudo pacman -S --needed cmake gcc vulkan-devel mesa lib32-mesa nasm python wine-staging box64-git && \
+sudo pacman -Syu --needed --noconfirm cmake gcc vulkan-devel mesa lib32-mesa nasm python wine-staging box64-git anbox-git && \
 chmod +x install.sh ulx_integrated_setup.sh ulx_universal_bridge.sh && \
-./install.sh install && \
-./ulx_integrated_setup.sh && \
-sudo ./ulx_universal_bridge.sh && \
-echo "ULX UNIVERSAL INSTALADO COM SUCESSO!"
+sudo ./install.sh install && \
+echo "\n=========================================================" && \
+echo "ULX UNIVERSAL INSTALADO COM SUCESSO! REINICIE O SISTEMA." && \
+echo "========================================================="
 ```
 
 ---
 
-## 🗑️ Desinstalação Completa (Copia e Cola)
+## 🗑️ Desinstalação Completa (Copia e Cola - Tudo Automático)
 
-Copie e cole o bloco abaixo no seu terminal para remover completamente o ULX, a Ponte Universal e todos os arquivos relacionados do seu sistema:
+Copie e cole **TODO** o bloco abaixo no seu terminal para remover completamente o ULX, a Ponte Universal e todos os arquivos relacionados do seu sistema, revertendo todas as configurações. **Reinicie o sistema após a desinstalação.**
 
 ```bash
-# Remover binários, bibliotecas e desativar binfmt_misc
-sudo rm -f /usr/local/bin/ulxc /usr/local/bin/ulx-run /usr/local/bin/ulx-run-exe /usr/local/bin/ulx-run-apk && \
-sudo rm -rf /usr/local/lib/ulx /usr/local/share/ulx && \
-[ -f /proc/sys/fs/binfmt_misc/ulx-exe ] && echo -1 | sudo tee /proc/sys/fs/binfmt_misc/ulx-exe && \
-[ -f /proc/sys/fs/binfmt_misc/ulx-apk ] && echo -1 | sudo tee /proc/sys/fs/binfmt_misc/ulx-apk && \
-make clean && \
-echo "ULX REMOVIDO COMPLETAMENTE!"
+# Remover binários, bibliotecas, configurações de binfmt e MIME types
+sudo ./install.sh uninstall && \
+echo "\n=========================================================" && \
+echo "ULX REMOVIDO COMPLETAMENTE! REINICIE O SISTEMA." && \
+echo "========================================================="
 ```
 
 ---
 
 ## 🛠️ Como Usar
+
+Após a instalação e reinício do sistema:
 
 1. **Compilar seu código ULX**:
    ```bash
@@ -46,10 +46,15 @@ echo "ULX REMOVIDO COMPLETAMENTE!"
    ```
 
 2. **Executar Jogos/Apps Windows (.exe) ou Android (.apk)**:
-   *Basta dar permissão de execução e rodar diretamente:*
+   *Basta dar permissão de execução e rodar diretamente. O sistema operacional já saberá como abri-los:*
    ```bash
-   chmod +x jogo.exe
-   ./jogo.exe
+   chmod +x meu_jogo.exe
+   ./meu_jogo.exe
+   ```
+   ou
+   ```bash
+   chmod +x meu_app.apk
+   ./meu_app.apk
    ```
 
 3. **Executar com Performance de Metal (AVX/Vulkan)**:
